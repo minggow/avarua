@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.mingguo.wu.account.repository.dao.PermissionDao">
+    <resultMap id="PermissionResultMap" type="com.mingguo.wu.account.model.Permission">
+        <id column="id" property="id" />
+        <result column="permission_name" property="permissionName" />
+        <result column="description" property="description" />
+        <result column="create_time" property="createTime" />
+        <result column="_timestamp" property="timestamp" />
+        <result column="is_delete" property="isDelete" />
+    </resultMap>
+    <sql id="Permission_Column_List">
+        id, permission_name, description, create_time, _timestamp
+    </sql>
+
+    <!--addPermission-->
+    <insert id="addPermission" parameterType="com.mingguo.wu.account.model.Permission">
+        INSERT INTO permission(permission_name, description, create_time)
+        VALUES (#{permissionName}, #{description}, now())
+    </insert>
+
+    <!--deletePermissionByIds-->
+    <update id="deletePermissionByIds" parameterType="java.util.List">
+        UPDATE permission SET is_delete = 1 WHERE id IN
+        <foreach collection="list" item="item" open="(" close=")" separator=",">
+            #{item}
+        </foreach>
+    </update>
+
+    <!--updatePermission-->
+    <update id="updatePermission" parameterType="com.mingguo.wu.account.model.Permission">
+        UPDATE permission
+        <set>
+            <if test="null != permissionName and '' != permissionName">
+                permission_name = #{permissionName}
+            </if>
+            <if test="null != description and '' != description">
+                description = #{description}
+            </if>
+        </set>
+    </update>
+
+    <!--getPermissionCount-->
+    <select id="getPermissionCount" >
+        SELECT COUNT(1) FROM permission WHERE is_delete = 0
+    </select>
+
+    <!--getPermissionCountByName-->
+    <select id="getPermissionCountByName" parameterType="java.lang.String">
+        SELECT COUNT(1) FROM permission WHERE permission_name LIKE "%"#{permissionName}"%" AND is_delete = 0
+    </select>
+
+    <!--getPermissionById-->
+    <select id="getPermissionById" resultMap="PermissionResultMap" parameterType="java.lang.Integer">
+        SELECT <include refid="Permission_Column_List" /> FROM permission
+        WHERE id =#{id} and is_delete = 0
+    </select>
+
+    <!--getPermissionListByIds-->
+    <select id="getPermissionListByIds" parameterType="java.util.List">
+        SELECT <include refid="Permission_Column_List" /> FROM permission WHERE id IN
+        <foreach collection="list" item="item" open="(" close=")" separator=",">
+            #{item}
+        </foreach>
+        AND is_delete = 0
+    </select>
+
+    <select id="getPermissionList" parameterType="java.util.Map">
+        SELECT <include refid="Permission_Column_List" /> FROM permission  WHERE is_delete = 0 LIMIT #{offset}, #{limit}
+    </select>
+
+    <select id="getPermissionListByName" parameterType="java.util.Map">
+        SELECT <include refid="Permission_Column_List" /> FROM permission
+        WHERE permission_name LIKE "%"#{permissionName}"%" AND is_delete = 0
+    </select>
+
+
+</mapper>

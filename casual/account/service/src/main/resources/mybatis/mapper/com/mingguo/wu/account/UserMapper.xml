@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.mingguo.wu.account.repository.dao.UserDao">
+    <resultMap id="UserResultMap" type="com.mingguo.wu.account.model.User">
+        <id column="id" property="id"/>
+        <result column="login_name" property="loginName"/>
+        <result column="password" property="password"/>
+        <result column="display_name" property="displayName"/>
+        <result column="description" property="description"/>
+        <result column="last_login_time" property="lastLoginTime"/>
+        <result column="login_count" property="loginCount"/>
+        <result column="create_time" property="createTime"/>
+        <result column="_timestamp" property="updateTime"/>
+        <result column="is_delete" property="isDelete" />
+    </resultMap>
+
+    <sql id="User_Column_List" >
+        id, login_name, password, display_name, description, last_login_time, login_count,
+        create_time, _timestamp, is_delete
+    </sql>
+
+    <!--addUser-->
+    <insert id="addUser" parameterType="com.mingguo.wu.account.model.User">
+        INSERT INTO `user` (login_name, password, display_name, description, last_login_time, login_count, create_time )
+        VALUES (#{loginName}, #{password}, #{displayName}, #{description}, #{lastLoginTime}, #{loginCount}, now())
+        <selectKey resultType="int" keyProperty="id">
+            SELECT LAST_INSERT_ID()
+        </selectKey>
+    </insert>
+
+    <!--deleteUser-->
+    <update id="deleteUsersByIds" parameterType="java.util.List">
+        UPDATE `user` SET is_delete = 1 WHERE id IN
+        <foreach item="item" collection="list" separator="," open="(" close=")" index="">
+            #{item}
+        </foreach>
+    </update>
+
+    <!--updateUser-->
+    <update id="updateUser" parameterType="com.mingguo.wu.account.model.User">
+        UPDATE `user`
+        <set>
+            <if test="null != password and password !=''">
+                password = #{password},
+            </if>
+            <if test="null != lastLoginTime">
+                last_login_time = #{lastLoginTime},
+            </if>
+            <if test="null != loginCount">
+                login_count = #{loginCount},
+            </if>
+            <if test="null != displayName">
+                display_name = #{displayName},
+            </if>
+            <if test="null != description">
+                description = #{description},
+            </if>
+        </set>
+        WHERE id = #{id} AND is_delete = 0
+    </update>
+
+    <!--getUserById-->
+    <select id="getUserById" parameterType="java.lang.Integer" resultMap="UserResultMap">
+        SELECT <include refid="User_Column_List" /> FROM `user`
+        WHERE id = #{id} AND is_delete = 0
+    </select>
+
+    <!--getUsersByIds-->
+    <select id="getUsersByIds" parameterType="java.util.List" resultMap="UserResultMap">
+        SELECT <include refid="User_Column_List" /> FROM `user`
+        WHERE is_delete = 0 AND id IN
+        <foreach item="item" collection="list" separator="," open="(" close=")" index="">
+            #{item}
+        </foreach>
+    </select>
+
+    <!--getUsersByLoginName-->
+    <select id="getUserByLoginName" parameterType="java.lang.String" resultMap="UserResultMap">
+        SELECT <include refid="User_Column_List" /> FROM `user`
+        WHERE login_name = #{loginName} AND is_delete = 0
+    </select>
+
+    <!--getUserList-->
+    <select id="getUserList" resultMap="UserResultMap">
+        SELECT <include refid="User_Column_List" /> FROM `user`
+        WHERE is_delete = 0 LIMIT #{offset}, #{limit}
+    </select>
+
+    <select id="getUserCount" resultType="java.lang.Integer">
+        SELECT count(1) FROM `user` WHERE is_delete = 0
+    </select>
+
+    <!--getCountByUserName-->
+    <select id="getCountByUserName" resultType="java.lang.Integer" parameterType="java.lang.String">
+        SELECT COUNT(1) FROM `user`
+        WHERE login_name LIKE "%"#{userName}"%" AND is_delete = 0
+    </select>
+
+    <!--getUsersByUserName-->
+    <select id="getUsersByUserName" parameterType="java.util.List" resultMap="UserResultMap">
+        SELECT <include refid="User_Column_List" /> FROM `user`
+        WHERE login_name LIKE "%"#{userName}"%" AND is_delete = 0
+        LIMIT #{offset}, #{limit}
+    </select>
+
+</mapper>

@@ -1,32 +1,32 @@
 CREATE TABLE `tb_schedule_user` (
-  `id` int(11) NOT NULL AUTO_INCREMENT COMMENT '×ÔÔöid',
-  `user_id` varchar(50) NOT NULL COMMENT 'ÓÃ»§id',
-  `user_name` varchar(50) NOT NULL COMMENT 'ÓÃ»§Ãû',
-  `user_type` tinyint(2) NOT NULL COMMENT '1:¹ÜÀíÔ±',
-  `department` varchar(50) NOT NULL DEFAULT '' COMMENT '²¿ÃÅ',
-  `phone` varchar(50) NOT NULL DEFAULT '' COMMENT 'µç»°',
+  `id` int(11) NOT NULL AUTO_INCREMENT COMMENT 'è‡ªå¢id',
+  `user_id` varchar(50) NOT NULL COMMENT 'ç”¨æˆ·id',
+  `user_name` varchar(50) NOT NULL COMMENT 'ç”¨æˆ·å',
+  `user_type` tinyint(2) NOT NULL COMMENT '1:ç®¡ç†å‘˜',
+  `department` varchar(50) NOT NULL DEFAULT '' COMMENT 'éƒ¨é—¨',
+  `phone` varchar(50) NOT NULL DEFAULT '' COMMENT 'ç”µè¯',
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=utf8;
 
 
 CREATE TABLE `tb_task` (
   `id` bigint(20) unsigned NOT NULL AUTO_INCREMENT,
-  `daemon_id` bigint(20) unsigned NOT NULL COMMENT 'Ö´ĞĞ´ËÈÎÎñdaemonÖ´ĞĞÆ÷µÄid',
-  `user_id` varchar(100) NOT NULL DEFAULT '' COMMENT 'ÓÃ»§id',
-  `cron_exp` varchar(16) NOT NULL COMMENT 'crontab±í´ïÊ½',
-  `shell_cmd` varchar(1000) NOT NULL COMMENT 'ÔËĞĞµÄÃüÁî,Ô­Ê¼ÃüÁî,Î´Ìæ»»²ÎÊıÇ°',
-  `must_replace_cmd` tinyint(1) NOT NULL COMMENT 'bool.ÊÇ·ñĞèÒªÌæ»»`Æ²ºÅÖĞµÄÃüÁîÎªÖ´ĞĞ½á¹û',
-  `run_mode` tinyint(1) NOT NULL COMMENT '0--±»¶¯Ä£Ê½,1--Ö÷¶¯Ä£Ê½',
-  `run_start_reportaddress` varchar(500) DEFAULT NULL COMMENT 'cmdÃüÁî¿ªÊ¼Ö´ĞĞµÄ»ã±¨µØÖ·',
-  `run_end_reportaddress` varchar(500) DEFAULT NULL COMMENT 'cmdÃüÁî½áÊøÖ´ĞĞµÄ»ã±¨µØÖ·',
-  `is_process_node` tinyint(1) NOT NULL DEFAULT '0' COMMENT '0--²»ÊÇÁ÷³ÌÖĞµÄÒ»¸ö½Úµã,1--ÊÇÁ÷³ÌÖĞµÄÒ»¸ö½Úµã',
-  `is_process_chain` tinyint(1) DEFAULT '0' COMMENT '0--²»ÊÇÁ÷³ÌÁ´task,1--ÊÇÁ÷³ÌÁ´task',
-  `process_tasks` text COMMENT 'Á÷³ÌÁ´Ä£Ê½ÏÂµÄ×ÓÁ´Ìõtask id¼¯ºÏ',
-  `comment` text NOT NULL COMMENT '¼ò½é',
-  `operate_uid` bigint(20) DEFAULT '-1' COMMENT '²Ù×÷ÈËµÄidºÅ',
-  `update_time` datetime DEFAULT NULL COMMENT 'ĞŞ¸ÄÈÕÆÚ',
-  `is_redo` tinyint(1) NOT NULL DEFAULT '0' COMMENT '0--²»ÖØĞÂÖ´ĞĞ´ËÈÎÎñ,1--ÖØĞÂÖ´ĞĞ´ËÈÎÎñ',
-  `end_redo_times` int(11) NOT NULL DEFAULT '0' COMMENT '½ØÖ¹ÖØĞÂÖ´ĞĞ´ÎÊı',
+  `daemon_id` bigint(20) unsigned NOT NULL COMMENT 'æ‰§è¡Œæ­¤ä»»åŠ¡daemonæ‰§è¡Œå™¨çš„id',
+  `user_id` varchar(100) NOT NULL DEFAULT '' COMMENT 'ç”¨æˆ·id',
+  `cron_exp` varchar(16) NOT NULL COMMENT 'crontabè¡¨è¾¾å¼',
+  `shell_cmd` varchar(1000) NOT NULL COMMENT 'è¿è¡Œçš„å‘½ä»¤,åŸå§‹å‘½ä»¤,æœªæ›¿æ¢å‚æ•°å‰',
+  `must_replace_cmd` tinyint(1) NOT NULL COMMENT 'bool.æ˜¯å¦éœ€è¦æ›¿æ¢`æ’‡å·ä¸­çš„å‘½ä»¤ä¸ºæ‰§è¡Œç»“æœ',
+  `run_mode` tinyint(1) NOT NULL COMMENT '0--è¢«åŠ¨æ¨¡å¼,1--ä¸»åŠ¨æ¨¡å¼',
+  `run_start_reportaddress` varchar(500) DEFAULT NULL COMMENT 'cmdå‘½ä»¤å¼€å§‹æ‰§è¡Œçš„æ±‡æŠ¥åœ°å€',
+  `run_end_reportaddress` varchar(500) DEFAULT NULL COMMENT 'cmdå‘½ä»¤ç»“æŸæ‰§è¡Œçš„æ±‡æŠ¥åœ°å€',
+  `is_process_node` tinyint(1) NOT NULL DEFAULT '0' COMMENT '0--ä¸æ˜¯æµç¨‹ä¸­çš„ä¸€ä¸ªèŠ‚ç‚¹,1--æ˜¯æµç¨‹ä¸­çš„ä¸€ä¸ªèŠ‚ç‚¹',
+  `is_process_chain` tinyint(1) DEFAULT '0' COMMENT '0--ä¸æ˜¯æµç¨‹é“¾task,1--æ˜¯æµç¨‹é“¾task',
+  `process_tasks` text COMMENT 'æµç¨‹é“¾æ¨¡å¼ä¸‹çš„å­é“¾æ¡task idé›†åˆ',
+  `comment` text NOT NULL COMMENT 'ç®€ä»‹',
+  `operate_uid` bigint(20) DEFAULT '-1' COMMENT 'æ“ä½œäººçš„idå·',
+  `update_time` datetime DEFAULT NULL COMMENT 'ä¿®æ”¹æ—¥æœŸ',
+  `is_redo` tinyint(1) NOT NULL DEFAULT '0' COMMENT '0--ä¸é‡æ–°æ‰§è¡Œæ­¤ä»»åŠ¡,1--é‡æ–°æ‰§è¡Œæ­¤ä»»åŠ¡',
+  `end_redo_times` int(11) NOT NULL DEFAULT '0' COMMENT 'æˆªæ­¢é‡æ–°æ‰§è¡Œæ¬¡æ•°',
   PRIMARY KEY (`id`)
 ) ENGINE=MyISAM AUTO_INCREMENT=98 DEFAULT CHARSET=utf8;
 
@@ -49,27 +49,27 @@ CREATE TABLE `tb_task_done` (
 
 CREATE TABLE `tb_task_record_done` (
   `id` bigint(20) unsigned NOT NULL AUTO_INCREMENT,
-  `task_id` bigint(20) NOT NULL COMMENT '¸ÃtaskÈÎÎñÊÇÄÄ¸ötask idÖ´ĞĞµÄ½á¹û',
-  `real_cmd` varchar(1000) DEFAULT NULL COMMENT '±»Ìæ»»²ÎÊıÎªÏÖ³¡Ê±¼äºóºóÕæÊµµÄÃüÁî',
-  `exit_code` int(10) NOT NULL COMMENT 'Íê³ÉµÄ·µ»ØÖµ¡£0--³É¹¦£¬ÆäËû¶¼--Ê§°Ü',
-  `complete_success` tinyint(1) DEFAULT NULL COMMENT 'Íê³ÉµÄ·µ»Ø×´Ì¬¡£1--³É¹¦£¬0--Ê§°Ü',
-  `start_datetime` datetime NOT NULL COMMENT 'ÈÎÎñ¿ªÊ¼Ê±¼ä(Èç¹ûÊÇ×Ô¶¯ÖØÖ´ĞĞÊ±,Ã¿´ÎÖ´ĞĞ²»ĞŞ¸ÄÆğÊ¼Ê±¼ä)',
-  `end_datetime` datetime NOT NULL COMMENT 'ÈÎÎñ½áÊøÊ±¼ä',
-  `exec_type` int(10) NOT NULL COMMENT 'Ö´ĞĞÀàĞÍ,0--crontabÖ´ĞĞ£¬1--ÊÖ¶¯ÖØÖ´ĞĞ,2--×Ô¶¯ÖØÖ´ĞĞ,3--µ±³¡Ö´ĞĞµÈ',
-  `exec_return_str` longtext COMMENT 'Ö´ĞĞºóµÄÍâ²¿½ø³Ì×Ö·û´®·µ»Ø½á¹û¡£',
-  `current_redo_times` int(11) DEFAULT NULL COMMENT 'µ±Ç°µÚ¼¸´Î×Ô¶¯ÖØÊÔÖ´ĞĞ',
-  `on_processing` tinyint(1) NOT NULL DEFAULT '0' COMMENT 'boolÊÇ·ñÕıÔÚÖ´ĞĞÖĞ,0--Ã»ÓĞÕıÔÚÖ´ĞĞ,1--ÕıÔÚÊÖ¶¯/×Ô¶¯Ö´ĞĞ',
+  `task_id` bigint(20) NOT NULL COMMENT 'è¯¥taskä»»åŠ¡æ˜¯å“ªä¸ªtask idæ‰§è¡Œçš„ç»“æœ',
+  `real_cmd` varchar(1000) DEFAULT NULL COMMENT 'è¢«æ›¿æ¢å‚æ•°ä¸ºç°åœºæ—¶é—´ååçœŸå®çš„å‘½ä»¤',
+  `exit_code` int(10) NOT NULL COMMENT 'å®Œæˆçš„è¿”å›å€¼ã€‚0--æˆåŠŸï¼Œå…¶ä»–éƒ½--å¤±è´¥',
+  `complete_success` tinyint(1) DEFAULT NULL COMMENT 'å®Œæˆçš„è¿”å›çŠ¶æ€ã€‚1--æˆåŠŸï¼Œ0--å¤±è´¥',
+  `start_datetime` datetime NOT NULL COMMENT 'ä»»åŠ¡å¼€å§‹æ—¶é—´(å¦‚æœæ˜¯è‡ªåŠ¨é‡æ‰§è¡Œæ—¶,æ¯æ¬¡æ‰§è¡Œä¸ä¿®æ”¹èµ·å§‹æ—¶é—´)',
+  `end_datetime` datetime NOT NULL COMMENT 'ä»»åŠ¡ç»“æŸæ—¶é—´',
+  `exec_type` int(10) NOT NULL COMMENT 'æ‰§è¡Œç±»å‹,0--crontabæ‰§è¡Œï¼Œ1--æ‰‹åŠ¨é‡æ‰§è¡Œ,2--è‡ªåŠ¨é‡æ‰§è¡Œ,3--å½“åœºæ‰§è¡Œç­‰',
+  `exec_return_str` longtext COMMENT 'æ‰§è¡Œåçš„å¤–éƒ¨è¿›ç¨‹å­—ç¬¦ä¸²è¿”å›ç»“æœã€‚',
+  `current_redo_times` int(11) DEFAULT NULL COMMENT 'å½“å‰ç¬¬å‡ æ¬¡è‡ªåŠ¨é‡è¯•æ‰§è¡Œ',
+  `on_processing` tinyint(1) NOT NULL DEFAULT '0' COMMENT 'boolæ˜¯å¦æ­£åœ¨æ‰§è¡Œä¸­,0--æ²¡æœ‰æ­£åœ¨æ‰§è¡Œ,1--æ­£åœ¨æ‰‹åŠ¨/è‡ªåŠ¨æ‰§è¡Œ',
   PRIMARY KEY (`id`)
 ) ENGINE=MyISAM AUTO_INCREMENT=1839 DEFAULT CHARSET=utf8;
 
 
 CREATE TABLE `tb_task_record_undo` (
   `id` bigint(20) unsigned NOT NULL AUTO_INCREMENT,
-  `task_id` bigint(20) NOT NULL COMMENT '¸ÃÈÎÎñÖ´ĞĞÕßµÄtask_idºÅÂë',
-  `real_cmd` varchar(1000) DEFAULT NULL COMMENT '±»Ìæ»»²ÎÊıÎªÏÖ³¡Ê±¼äºóºóÕæÊµµÄÃüÁî',
-  `run_status` int(4) NOT NULL COMMENT 'ÔËĞĞ×´Ì¬---0 ½øĞĞÖĞ...',
-  `start_datetime` datetime NOT NULL COMMENT 'Ö´ĞĞ¿ªÊ¼Ê±¼ä',
-  `exec_type` int(10) NOT NULL COMMENT 'Ö´ĞĞÀàĞÍ,0--crontabÖ´ĞĞ£¬1--ÊÖ¶¯ÖØÖ´ĞĞ...',
+  `task_id` bigint(20) NOT NULL COMMENT 'è¯¥ä»»åŠ¡æ‰§è¡Œè€…çš„task_idå·ç ',
+  `real_cmd` varchar(1000) DEFAULT NULL COMMENT 'è¢«æ›¿æ¢å‚æ•°ä¸ºç°åœºæ—¶é—´ååçœŸå®çš„å‘½ä»¤',
+  `run_status` int(4) NOT NULL COMMENT 'è¿è¡ŒçŠ¶æ€---0 è¿›è¡Œä¸­...',
+  `start_datetime` datetime NOT NULL COMMENT 'æ‰§è¡Œå¼€å§‹æ—¶é—´',
+  `exec_type` int(10) NOT NULL COMMENT 'æ‰§è¡Œç±»å‹,0--crontabæ‰§è¡Œï¼Œ1--æ‰‹åŠ¨é‡æ‰§è¡Œ...',
   PRIMARY KEY (`id`)
 ) ENGINE=MyISAM AUTO_INCREMENT=12683 DEFAULT CHARSET=utf8;
 

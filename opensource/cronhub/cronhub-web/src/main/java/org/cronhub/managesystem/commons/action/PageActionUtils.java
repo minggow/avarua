@@ -1,9 +1,9 @@
 package org.cronhub.managesystem.commons.action;
 
-import java.util.List;
-
 import org.apache.struts2.ServletActionContext;
 import org.cronhub.managesystem.commons.params.Params;
+
+import java.util.List;
 
 /***
  * 这个类主要用于将实际数据List,总共多少页,翻页后应该到第几页了,总共多少条记录等,页面上要用的放入Request，传回给页面,供展示用的类,没有涉及分页算法的计算

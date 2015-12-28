@@ -1,13 +1,13 @@
 package org.cronhub.managesystem.commons.logger;
 
+import org.apache.log4j.Appender;
+import org.apache.log4j.WriterAppender;
+
 import java.io.PrintWriter;
 import java.io.Reader;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
-
-import org.apache.log4j.Appender;
-import org.apache.log4j.WriterAppender;
 
 
 public class LoggerToReader {

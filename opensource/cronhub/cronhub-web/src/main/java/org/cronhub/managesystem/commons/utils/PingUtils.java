@@ -1,14 +1,13 @@
 package org.cronhub.managesystem.commons.utils;
 
-import java.util.HashMap;
-import java.util.Map;
-
 import org.apache.thrift.TException;
-import org.apache.thrift.transport.TTransport;
 import org.cronhub.managesystem.commons.logger.AppLogger;
 import org.cronhub.managesystem.commons.thrift.call.IExecuter;
 import org.cronhub.managesystem.commons.thrift.call.RemoteCaller;
 import org.cronhub.managesystem.commons.thrift.gen.ExecutorService.Client;
+
+import java.util.HashMap;
+import java.util.Map;
 
 public class PingUtils {
 	static final Map<String,IExecuter> executePool= new HashMap<String,IExecuter>();

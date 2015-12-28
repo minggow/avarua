@@ -1,4 +1,4 @@
-<%@ page language="java" import="java.util.*" contentType="text/xml; charset=utf-8"%><%response.setHeader("pragma", "no-cache");
+<%@ page language="java" contentType="text/xml; charset=utf-8"%><%response.setHeader("pragma", "no-cache");
 response.setHeader("cache-control", "no-cache");
 response.setDateHeader("expires", 0);
 

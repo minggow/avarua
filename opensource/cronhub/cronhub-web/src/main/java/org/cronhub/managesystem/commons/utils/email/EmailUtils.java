@@ -1,9 +1,9 @@
 package org.cronhub.managesystem.commons.utils.email;
 
+import org.apache.commons.mail.SimpleEmail;
+
 import java.util.Arrays;
 import java.util.List;
-
-import org.apache.commons.mail.SimpleEmail;
 
 public class EmailUtils {
 	private String fromMailUser;

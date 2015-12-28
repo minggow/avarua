@@ -1,12 +1,11 @@
 package org.cronhub.managesystem.auth.action;
 
-import java.util.List;
-
+import com.opensymphony.xwork2.ActionSupport;
 import org.cronhub.managesystem.auth.service.UserService;
 import org.cronhub.managesystem.commons.dao.bean.AuthUser;
 import org.cronhub.managesystem.commons.utils.PageIOUtils;
 
-import com.opensymphony.xwork2.ActionSupport;
+import java.util.List;
 
 public class UserAction extends ActionSupport {
 	private UserService userService;

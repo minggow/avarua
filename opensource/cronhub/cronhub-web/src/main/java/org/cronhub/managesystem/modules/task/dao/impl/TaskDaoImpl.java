@@ -1,10 +1,5 @@
 package org.cronhub.managesystem.modules.task.dao.impl;
 
-import java.sql.Connection;
-import java.sql.PreparedStatement;
-import java.sql.SQLException;
-import java.util.List;
-
 import org.cronhub.managesystem.commons.dao.BaseRowMapper;
 import org.cronhub.managesystem.commons.dao.bean.Task;
 import org.cronhub.managesystem.commons.dao.config.AssociateDeleteConfig;
@@ -16,6 +11,11 @@ import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.core.PreparedStatementCreator;
 import org.springframework.jdbc.support.GeneratedKeyHolder;
 import org.springframework.jdbc.support.KeyHolder;
+
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.SQLException;
+import java.util.List;
 
 
 public class TaskDaoImpl implements ITaskDao {

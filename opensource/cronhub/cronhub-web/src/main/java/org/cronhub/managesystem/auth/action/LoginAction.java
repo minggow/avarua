@@ -1,14 +1,16 @@
 package org.cronhub.managesystem.auth.action;
 
-import com.opensymphony.xwork2.ActionContext;
-import com.opensymphony.xwork2.ActionSupport;
+import java.util.List;
+
+import javax.servlet.http.HttpSession;
+
 import org.apache.struts2.ServletActionContext;
 import org.cronhub.managesystem.auth.service.UserService;
 import org.cronhub.managesystem.commons.dao.bean.AuthLoginLog;
 import org.cronhub.managesystem.commons.dao.bean.AuthUser;
 
-import javax.servlet.http.HttpSession;
-import java.util.List;
+import com.opensymphony.xwork2.ActionContext;
+import com.opensymphony.xwork2.ActionSupport;
 
 public class LoginAction extends ActionSupport{
 	private static final long serialVersionUID = 6166185277488075690L;
@@ -32,7 +34,7 @@ public class LoginAction extends ActionSupport{
 			}else {
 				session.getSession().put("userType", "user");
 			}
-//			userService.addLoginLog(user_id);
+			userService.addLoginLog(user_id);
 			return SUCCESS;
 		}
 		else {
@@ -43,14 +45,14 @@ public class LoginAction extends ActionSupport{
 	
 	public String logout() {
 		HttpSession session= ServletActionContext.getRequest().getSession();
-//		userService.addLogoutLog((String)session.getAttribute("user_id"));
+		userService.addLogoutLog((String)session.getAttribute("user_id"));
 		session.invalidate();
 		return SUCCESS;
 	}
 
 	public String listLoginLog() {
-//		List<AuthLoginLog> logs = userService.findAllLoginLog();
-//		this.setLogList(logs);
+		List<AuthLoginLog> logs = userService.findAllLoginLog();
+		this.setLogList(logs);
 		return SUCCESS;
 	}
 

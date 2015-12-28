@@ -1,12 +1,15 @@
 package org.cronhub.managesystem.commons.utils;
 
+import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.List;
+
+import net.sf.json.JSONArray;
 import net.sf.json.JSONObject;
+
 import org.apache.commons.lang.StringUtils;
 import org.apache.struts2.ServletActionContext;
 import org.cronhub.managesystem.commons.params.Params;
-
-import java.util.ArrayList;
-import java.util.List;
 
 /***
  * 利用{"equal":{"state":"success","mode":"true"},"like":{"ip":"230.91"}}生成形如WHERE state = 'success' AND mode = 'true' AND ip LIKE '%230.91%'这样的SQL

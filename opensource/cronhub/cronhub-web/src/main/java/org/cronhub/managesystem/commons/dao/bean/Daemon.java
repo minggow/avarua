@@ -1,9 +1,10 @@
 package org.cronhub.managesystem.commons.dao.bean;
 
+import java.util.Date;
+import java.util.List;
+
 import org.apache.commons.lang.builder.EqualsBuilder;
 import org.apache.commons.lang.builder.HashCodeBuilder;
-
-import java.util.Date;
 
 public class Daemon {
 	private Long id;

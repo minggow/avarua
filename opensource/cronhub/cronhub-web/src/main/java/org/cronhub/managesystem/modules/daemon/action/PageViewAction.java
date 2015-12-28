@@ -1,7 +1,12 @@
 package org.cronhub.managesystem.modules.daemon.action;
 
-import com.opensymphony.xwork2.ActionSupport;
+import java.util.ArrayList;
+import java.util.List;
+
+import javax.servlet.http.HttpServletRequest;
+
 import net.sf.json.JSONObject;
+
 import org.apache.struts2.ServletActionContext;
 import org.cronhub.managesystem.commons.action.IFindByPage;
 import org.cronhub.managesystem.commons.action.PageActionUtils;
@@ -16,8 +21,7 @@ import org.cronhub.managesystem.commons.utils.PageIOUtils;
 import org.cronhub.managesystem.commons.utils.PageSqlGenerater;
 import org.cronhub.managesystem.modules.daemon.dao.IDaemonDao;
 
-import javax.servlet.http.HttpServletRequest;
-import java.util.List;
+import com.opensymphony.xwork2.ActionSupport;
 
 public class PageViewAction extends ActionSupport {
 	private PageSqlGenerater pageGen;

@@ -1,8 +1,9 @@
 package org.cronhub.managesystem.auth.dao;
 
-import org.cronhub.managesystem.commons.dao.bean.AuthUser;
-
 import java.util.List;
+
+import org.cronhub.managesystem.commons.dao.bean.AuthUser;
+import org.cronhub.managesystem.commons.dao.bean.AuthLoginLog;
 
 public interface UserDao {
 
@@ -14,9 +15,9 @@ public interface UserDao {
 
 	boolean deleteById(String user_id);
 
-//	void saveLoginLog(AuthLoginLog log);
-//
-//	void saveLogoutLog(AuthLoginLog log);
-//
-//	List<AuthLoginLog> findAllLoginLog();
+	void saveLoginLog(AuthLoginLog log);
+
+	void saveLogoutLog(AuthLoginLog log);
+
+	List<AuthLoginLog> findAllLoginLog();
 }

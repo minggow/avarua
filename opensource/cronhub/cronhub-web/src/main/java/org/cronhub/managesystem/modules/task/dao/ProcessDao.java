@@ -1,10 +1,11 @@
 package org.cronhub.managesystem.modules.task.dao;
 
+import java.util.List;
+
 import org.cronhub.managesystem.commons.dao.bean.Process;
 import org.cronhub.managesystem.commons.dao.bean.Task;
+import org.cronhub.managesystem.commons.dao.config.AssociateDeleteConfig;
 import org.cronhub.managesystem.commons.dao.config.FillConfig;
-
-import java.util.List;
 
 public interface ProcessDao {
 	/**

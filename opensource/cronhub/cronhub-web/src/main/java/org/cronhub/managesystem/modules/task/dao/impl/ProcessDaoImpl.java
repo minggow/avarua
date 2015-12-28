@@ -1,5 +1,7 @@
 package org.cronhub.managesystem.modules.task.dao.impl;
 
+import java.util.List;
+
 import org.cronhub.managesystem.commons.dao.BaseRowMapper;
 import org.cronhub.managesystem.commons.dao.bean.Process;
 import org.cronhub.managesystem.commons.dao.bean.Task;
@@ -7,8 +9,6 @@ import org.cronhub.managesystem.commons.dao.config.FillConfig;
 import org.cronhub.managesystem.modules.daemon.dao.IDaemonDao;
 import org.cronhub.managesystem.modules.task.dao.ProcessDao;
 import org.springframework.jdbc.core.JdbcTemplate;
-
-import java.util.List;
 
 public class ProcessDaoImpl implements ProcessDao {
 	private JdbcTemplate jdbcTemplate;

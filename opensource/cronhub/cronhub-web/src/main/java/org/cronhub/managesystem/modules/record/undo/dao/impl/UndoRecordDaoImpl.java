@@ -1,20 +1,9 @@
 package org.cronhub.managesystem.modules.record.undo.dao.impl;
 
-import java.sql.Connection;
-import java.sql.PreparedStatement;
-import java.sql.SQLException;
-import java.text.SimpleDateFormat;
-import java.util.HashMap;
-import java.util.HashSet;
-import java.util.List;
-import java.util.Map;
-import java.util.Set;
-
+import com.mysql.jdbc.Statement;
 import net.sf.json.JSONObject;
-
 import org.cronhub.managesystem.commons.dao.BaseRowMapper;
 import org.cronhub.managesystem.commons.dao.bean.Task;
-import org.cronhub.managesystem.commons.dao.bean.TaskRecordDone;
 import org.cronhub.managesystem.commons.dao.bean.TaskRecordUndo;
 import org.cronhub.managesystem.commons.dao.config.FillConfig;
 import org.cronhub.managesystem.commons.params.daemon.ParamCommons;
@@ -26,7 +15,11 @@ import org.springframework.jdbc.core.PreparedStatementCreator;
 import org.springframework.jdbc.support.GeneratedKeyHolder;
 import org.springframework.jdbc.support.KeyHolder;
 
-import com.mysql.jdbc.Statement;
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.SQLException;
+import java.text.SimpleDateFormat;
+import java.util.*;
 
 public class UndoRecordDaoImpl implements IUndoRecordDao {
 	private SimpleDateFormat sdf = new SimpleDateFormat(ParamCommons.DATE_FORMAT);

@@ -1,15 +1,13 @@
 package org.cronhub.managesystem.auth.dao.impl;
 
-import java.util.List;
-
 import org.cronhub.managesystem.auth.dao.UserDao;
 import org.cronhub.managesystem.commons.dao.BaseRowMapper;
 import org.cronhub.managesystem.commons.dao.bean.AuthUser;
-import org.cronhub.managesystem.commons.dao.bean.AuthLoginLog;
-import org.cronhub.managesystem.commons.dao.bean.Task;
 import org.springframework.dao.DataAccessException;
 import org.springframework.dao.DuplicateKeyException;
 import org.springframework.jdbc.core.JdbcTemplate;
+
+import java.util.List;
 
 public class UserDaoImpl implements UserDao {
 	private JdbcTemplate jdbcTemplate;
@@ -74,24 +72,24 @@ public class UserDaoImpl implements UserDao {
 		return true;
 	}
 
-	@Override
-	public void saveLoginLog(AuthLoginLog log) {
-		final String sql = "INSERT INTO login_log(user_id, login_time)" +
-				" VALUES(?,?)";
-		this.jdbcTemplate.update(sql, new Object[]{log.getUser_id(), log.getLogin_time()});
-	}
-
-	@Override
-	public void saveLogoutLog(AuthLoginLog log) {
-		final String sql = "UPDATE login_log SET logout_time = ? WHERE user_id = ? AND logout_time is null";
-		this.jdbcTemplate.update(sql, new Object[]{log.getLogout_time(), log.getUser_id()});
-	}
-
-	@Override
-	@SuppressWarnings("unchecked")
-	public List<AuthLoginLog> findAllLoginLog() {
-		final String sql = "SELECT * from login_log order by login_time desc ";
-		List<AuthLoginLog> loglist = jdbcTemplate.query(sql, new BaseRowMapper(AuthLoginLog.class));
-		return loglist;
-	}
+//	@Override
+//	public void saveLoginLog(AuthLoginLog log) {
+//		final String sql = "INSERT INTO login_log(user_id, login_time)" +
+//				" VALUES(?,?)";
+//		this.jdbcTemplate.update(sql, new Object[]{log.getUser_id(), log.getLogin_time()});
+//	}
+//
+//	@Override
+//	public void saveLogoutLog(AuthLoginLog log) {
+//		final String sql = "UPDATE login_log SET logout_time = ? WHERE user_id = ? AND logout_time is null";
+//		this.jdbcTemplate.update(sql, new Object[]{log.getLogout_time(), log.getUser_id()});
+//	}
+//
+//	@Override
+//	@SuppressWarnings("unchecked")
+//	public List<AuthLoginLog> findAllLoginLog() {
+//		final String sql = "SELECT * from login_log order by login_time desc ";
+//		List<AuthLoginLog> loglist = jdbcTemplate.query(sql, new BaseRowMapper(AuthLoginLog.class));
+//		return loglist;
+//	}
 }

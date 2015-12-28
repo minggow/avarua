@@ -1,10 +1,10 @@
 package org.cronhub.managesystem.modules.daemon.dao;
 
-import java.util.List;
-
 import org.cronhub.managesystem.commons.dao.bean.Daemon;
 import org.cronhub.managesystem.commons.dao.config.AssociateDeleteConfig;
 import org.cronhub.managesystem.commons.dao.config.FillConfig;
+
+import java.util.List;
 
 
 public interface IDaemonDao {

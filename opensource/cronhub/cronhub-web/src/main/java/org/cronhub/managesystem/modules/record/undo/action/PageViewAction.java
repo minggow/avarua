@@ -1,7 +1,6 @@
 package org.cronhub.managesystem.modules.record.undo.action;
 
-import java.util.List;
-
+import com.opensymphony.xwork2.ActionSupport;
 import org.apache.struts2.ServletActionContext;
 import org.cronhub.managesystem.commons.action.IFindByPage;
 import org.cronhub.managesystem.commons.action.PageActionUtils;
@@ -11,7 +10,7 @@ import org.cronhub.managesystem.commons.utils.FilterSqlGenerater;
 import org.cronhub.managesystem.commons.utils.PageSqlGenerater;
 import org.cronhub.managesystem.modules.record.undo.dao.IUndoRecordDao;
 
-import com.opensymphony.xwork2.ActionSupport;
+import java.util.List;
 
 public class PageViewAction extends ActionSupport {
 	private PageSqlGenerater pageGen;

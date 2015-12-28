@@ -1,9 +1,9 @@
 package org.cronhub.managesystem.commons.utils.container;
 
-import javax.servlet.ServletContext;
-
 import org.apache.struts2.ServletActionContext;
 import org.springframework.web.context.support.WebApplicationContextUtils;
+
+import javax.servlet.ServletContext;
 
 public class WebContainer {
 	public static Object getBean(String beanId){

@@ -1,22 +1,18 @@
 package org.cronhub.managesystem.commons.dao;
 
+import org.cronhub.managesystem.commons.utils.BeanUtils;
+import org.springframework.jdbc.core.RowMapper;
+
 import java.lang.reflect.Field;
 import java.lang.reflect.Method;
 import java.sql.ResultSet;
 import java.sql.ResultSetMetaData;
 import java.sql.SQLException;
 import java.sql.Timestamp;
-import java.text.SimpleDateFormat;
 import java.util.ArrayList;
-import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
 import java.util.Map;
-
-import org.cronhub.managesystem.commons.dao.bean.Daemon;
-import org.cronhub.managesystem.commons.dao.bean.TaskRecordUndo;
-import org.cronhub.managesystem.commons.utils.BeanUtils;
-import org.springframework.jdbc.core.RowMapper;
 
 /***
  * 利用反射去根据jdbc的ResultSet构造出bean类的对象

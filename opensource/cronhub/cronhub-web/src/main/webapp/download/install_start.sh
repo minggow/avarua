@@ -119,12 +119,12 @@ then
 fi;
 
 #add to system service
-cmd="$jsvc_target_bin -home $java_home -Xmx2000m -pidfile $install_path/$daemon_port.pid -cp $daemon_jar_path com.baofeng.dispatchexecutor.boot.DaemonBoot -p $daemon_port";
+cmd="$jsvc_target_bin -home $java_home -Xmx2000m -pidfile $install_path/$daemon_port.pid -cp $daemon_jar_path org.cronhub.dispatchexecutor.boot.DaemonBoot -p $daemon_port";
 echo -e "#description:cronhub_daemon
 #chkconfig:231 80 80
 case \"\$1\" in
 start)
-\t${install_path}/jsvc/jsvc -home $JAVA_HOME -Xmx2000m -pidfile ${install_path}/$daemon_port.pid -cp ${install_path}/DispatchSystemDaemon.jar com.baofeng.dispatchexecutor.boot.DaemonBoot -p $daemon_port
+\t${install_path}/jsvc/jsvc -home $JAVA_HOME -Xmx2000m -pidfile ${install_path}/$daemon_port.pid -cp ${install_path}/DispatchSystemDaemon.jar org.cronhub.dispatchexecutor.boot.DaemonBoot -p $daemon_port
 \t;;
 esac
 " > /etc/init.d/cronhub_daemon
@@ -135,5 +135,5 @@ chmod +x /etc/init.d/cronhub_daemon
 /sbin/service cronhub_daemon start
 echo "all done"
 #the final start cmd
-#$jsvc_target_bin -home $java_home -Xmx2000m -pidfile $install_path"/"$daemon_port".pid" -cp $daemon_jar_path com.baofeng.dispatchexecutor.boot.DaemonBoot -p $daemon_port
+#$jsvc_target_bin -home $java_home -Xmx2000m -pidfile $install_path"/"$daemon_port".pid" -cp $daemon_jar_path org.cronhub.dispatchexecutor.boot.DaemonBoot -p $daemon_port
 

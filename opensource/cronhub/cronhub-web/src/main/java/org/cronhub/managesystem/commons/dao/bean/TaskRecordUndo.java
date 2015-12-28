@@ -1,9 +1,8 @@
 package org.cronhub.managesystem.commons.dao.bean;
 
-import java.util.Date;
-
-import org.cronhub.managesystem.commons.params.Params;
 import org.cronhub.managesystem.commons.utils.time.TimeUtils;
+
+import java.util.Date;
 
 
 public class TaskRecordUndo {

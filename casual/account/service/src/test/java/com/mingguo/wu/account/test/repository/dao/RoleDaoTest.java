@@ -2,7 +2,7 @@ package com.mingguo.wu.account.test.repository.dao;
 
 import com.alibaba.fastjson.JSON;
 import com.mingguo.wu.account.model.Role;
-import com.mingguo.wu.account.repository.dao.RoleDao;
+import com.mingguo.avarua.casual.account.service.impl.RoleDao;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;

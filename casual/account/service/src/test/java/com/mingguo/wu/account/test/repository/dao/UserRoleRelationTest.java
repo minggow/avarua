@@ -2,14 +2,12 @@ package com.mingguo.wu.account.test.repository.dao;
 
 import com.alibaba.fastjson.JSON;
 import com.mingguo.wu.account.model.UserRoleRelation;
-import com.mingguo.wu.account.repository.dao.UserRoleRelationDao;
+import com.mingguo.avarua.casual.account.service.impl.UserRoleRelationDao;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
-
-import java.util.Arrays;
 
 /**
  * Created by wumingguo on 2015/9/21.

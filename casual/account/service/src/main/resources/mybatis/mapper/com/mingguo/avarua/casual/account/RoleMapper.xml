@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.mingguo.avarua.casual.account.service.repository.dao.RoleDao">
+    <resultMap type="com.mingguo.wu.account.model.Role" id="RoleResultMap">
+        <id column="id" property="id" />
+        <result column="role_name" property="roleName"/>
+        <result column="description" property="description"/>
+        <result column="create_time" property="createTime"/>
+        <result column="_timestamp" property="updateTime"/>
+        <result column="is_delete"  property="isDelete"/>
+    </resultMap>
+
+    <sql id="Role_Column_List" >
+        id, role_name, description, create_time, _timestamp, is_delete
+    </sql>
+
+    <insert id="addRole" parameterType="com.mingguo.wu.account.model.Role">
+        INSERT INTO role (role_name, description, create_time, is_delete)
+        VALUES(#{roleName},#{description}, now(), 0)
+        <selectKey resultType="int" keyProperty="id">
+            SELECT LAST_INSERT_ID()
+        </selectKey>
+    </insert>
+
+    <update id="updateRole" parameterType="com.mingguo.wu.account.model.Role">
+        UPDATE role
+        <set>
+            <if test="null != roleName and '' != roleName">
+                role_name = #{roleName},
+            </if>
+            <if test="null != description and '' != description">
+                description = #{description},
+            </if>
+        </set>
+        _timestamp = now()
+        WHERE id = #{id} AND is_delete = 0;
+    </update>
+
+    <delete id="deleteRolesByIds" parameterType="java.util.List">
+        UPDATE FROM role SET is_delete = 1 WHERE id IN
+        <foreach item="item" collection="list" separator="," open="(" close=")" index="">
+            #{item}
+        </foreach>
+    </delete>
+
+    <select id="getRoleById" parameterType="java.lang.Integer" resultMap="RoleResultMap">
+        SELECT <include refid="Role_Column_List" />  FROM role
+        WHERE id = #{id} AND is_delete = 0
+    </select>
+
+    <select id="getRolesByIds" parameterType="java.util.List" resultMap="RoleResultMap">
+        SELECT <include refid="Role_Column_List" /> FROM role
+        WHERE is_delete = 0 AND id IN
+        <foreach item="item" collection="list" separator="," open="(" close=")" index="">
+            #{item}
+        </foreach>
+    </select>
+
+    <select id="getRoleList" parameterType="java.util.Map" resultMap="RoleResultMap">
+        SELECT <include refid="Role_Column_List" /> FROM role
+        WHERE is_delete = 0  LIMIT #{offset}, #{limit}
+    </select>
+
+    <select id="getRoleCount" resultType="java.lang.Integer">
+        SELECT count(1) FROM role WHERE is_delete = 0
+    </select>
+
+    <select id="getRoleCountByRoleName" resultType="java.lang.Integer" parameterType="java.lang.String">
+        SELECT count(1) FROM role
+        WHERE role_name like "%"#{roleName}"%" AND is_delete = 0
+    </select>
+
+    <select id="getRolesByRoleName" parameterType="java.util.List" resultMap="RoleResultMap">
+        SELECT <include refid="Role_Column_List" /> FROM role
+        WHERE role_name like "%"#{roleName}"%" AND is_delete = 0 LIMIT #{offset}, #{limit}
+    </select>
+
+    <select id="getRoleCountByFullRoleName" resultType="java.lang.Integer" parameterType="java.lang.String">
+        SELECT COUNT(1) FROM role
+        WHERE role_name = #{roleName} AND is_delete = 0
+    </select>
+</mapper>

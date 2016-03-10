@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<configuration scan="false" >
+    <property name="log.level" value="${log.level:-INFO}"/>
+    <property name="log.dir" value="${log.dir:-logs}"/>
+    <property name="bufferedIO" value="false"/>
+    <property name="immediateFlush" value="true"/>
+    <property name="encoding" value="UTF-8"/>
+    <property name="append" value="true"/>
+    <!-- 日志文件名 -->
+    <property name="logFileName" value="dj-job-v2-service-provider" />
+    <property name="normal-pattern" value="%d{yyyy-MM-dd.HH:mm:ss.SSS} [%thread] %-5level %logger{10}.%M:%L  %msg%n"/>
+
+
+    <!-- 统一使用封装之后的Appender，方便进行管理 -->
+    <appender name="mainAppender" class="ch.qos.logback.core.rolling.RollingFileAppender">
+        <Append>${append}</Append>
+        <!-- 根据需求自行调整日志名称 -->
+        <!--备注：${log.dir}不可以调整，在部署的时候进行指定 -->
+        <File>${log.dir}/${logFileName}.log</File>
+        <!-- 根据需求自行调整日志名称 -->
+        <!--备注：${log.dir}不可以调整，在部署的时候进行指定 -->
+        <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+            <!-- 非当天的Log文件进行压缩归档 -->
+            <FileNamePattern>${log.dir}/${logFileName}.log.%d{yyyy-MM-dd}.gz</FileNamePattern>
+            <!-- 超过7天的备份文件会被删除 -->
+            <maxHistory>7</maxHistory>
+        </rollingPolicy>
+        <encoder class="ch.qos.logback.classic.encoder.PatternLayoutEncoder">
+            <Pattern>${normal-pattern}</Pattern>
+        </encoder>
+    </appender>
+
+
+    <!-- 具体的日志配置 -->
+    <root>
+        <level value="INFO"/>
+        <appender-ref ref="mainAppender"/>
+    </root>
+</configuration>

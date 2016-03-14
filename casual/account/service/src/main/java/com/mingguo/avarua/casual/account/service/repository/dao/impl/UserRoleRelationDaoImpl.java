@@ -13,7 +13,7 @@ import java.util.Map;
 /**
  * Created by mingguo.wu on 2015/10/8.
  */
-@Component("userRoleRelationDao")
+@Component
 public class UserRoleRelationDaoImpl implements UserRoleRelationDao{
 
     private final String NAMESPACE = "com.mingguo.avarua.casual.account.service.repository.dao.UserRoleRelationDao.";

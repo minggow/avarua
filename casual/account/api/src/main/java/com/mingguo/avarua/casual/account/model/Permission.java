@@ -1,11 +1,13 @@
 package com.mingguo.avarua.casual.account.model;
 
 import com.mingguo.casual.infra.bean.model.AbstractBaseModel;
+import lombok.Data;
 
 /**
  * 权限类
  * Created by mingguo.wu on 2015/9/15.
  */
+@Data
 public class Permission extends AbstractBaseModel{
     /**
      * 权限名称
@@ -19,28 +21,4 @@ public class Permission extends AbstractBaseModel{
      * 资源总数
      */
     private Integer resourceCount;
-
-    public String getPermissionName() {
-        return permissionName;
-    }
-
-    public void setPermissionName(String permissionName) {
-        this.permissionName = permissionName;
-    }
-
-    public String getDescription() {
-        return description;
-    }
-
-    public void setDescription(String description) {
-        this.description = description;
-    }
-
-    public Integer getResourceCount() {
-        return resourceCount;
-    }
-
-    public void setResourceCount(Integer resourceCount) {
-        this.resourceCount = resourceCount;
-    }
 }

@@ -158,6 +158,8 @@
                 <version>2.5.3</version>
             </dependency>
 
+
+
             <dependency>
                 <groupId>org.slf4j</groupId>
                 <artifactId>slf4j-api</artifactId>
@@ -189,10 +191,17 @@
                 <artifactId>mybatis-spring</artifactId>
                 <version>1.2.0</version>
             </dependency>
+
+            <!--google-->
             <dependency>
                 <groupId>com.google.guava</groupId>
                 <artifactId>guava</artifactId>
                 <version>14.0.1</version>
+            </dependency>
+            <dependency>
+                <groupId>com.google.code.gson</groupId>
+                <artifactId>gson</artifactId>
+                <version>2.6</version>
             </dependency>
             <dependency>
                 <groupId>mysql</groupId>

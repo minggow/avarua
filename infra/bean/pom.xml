@@ -12,4 +12,11 @@
 	<modelVersion>4.0.0</modelVersion>
 
 	<artifactId>avarua-infra-bean</artifactId>
+
+	<dependencies>
+		<dependency>
+			<groupId>org.projectlombok</groupId>
+			<artifactId>lombok</artifactId>
+		</dependency>
+	</dependencies>
 </project>

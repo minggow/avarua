@@ -1,11 +1,14 @@
 package com.mingguo.casual.infra.bean.model;
 
+import lombok.Data;
+
 import java.io.Serializable;
 import java.util.Date;
 
 /**
  * Create by mingguo.wu on 15/9/29.
  */
+@Data
 public abstract class AbstractBaseModel implements Serializable {
 	//unique id
 	protected Integer id;
@@ -15,36 +18,4 @@ public abstract class AbstractBaseModel implements Serializable {
 	protected Date createTime;
 	//update time
 	protected Date updateTime;
-	
-	public Date getCreateTime() {
-		return createTime;
-	}
-	
-	public void setCreateTime(Date createTime) {
-		this.createTime = createTime;
-	}
-	
-	public Date getUpdateTime() {
-		return updateTime;
-	}
-
-	public void setUpdateTime(Date updateTime) {
-		this.updateTime = updateTime;
-	}
-
-	public Boolean getIsDelete() {
-		return isDelete;
-	}
-
-	public void setIsDelete(Boolean isDelete) {
-		this.isDelete = isDelete;
-	}
-
-	public Integer getId() {
-		return id;
-	}
-
-	public void setId(Integer id) {
-		this.id = id;
-	}
 }

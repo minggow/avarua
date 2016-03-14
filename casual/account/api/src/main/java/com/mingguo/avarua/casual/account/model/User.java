@@ -1,6 +1,7 @@
 package com.mingguo.avarua.casual.account.model;
 
 import com.mingguo.casual.infra.bean.model.AbstractBaseModel;
+import lombok.Data;
 
 import java.util.ArrayList;
 import java.util.Date;
@@ -10,6 +11,7 @@ import java.util.List;
  * 用户类
  * Created by mingguo.wu on 2015/9/15.
  */
+@Data
 public class User extends AbstractBaseModel {
     /**
      * 用户登录名称
@@ -75,67 +77,4 @@ public class User extends AbstractBaseModel {
         return false;
     }
 
-    public Integer getLoginCount() {
-        return loginCount;
-    }
-
-    public void setLoginCount(Integer loginCount) {
-        this.loginCount = loginCount;
-    }
-
-    public Date getLastLoginTime() {
-        return lastLoginTime;
-    }
-
-    public void setLastLoginTime(Date lastLoginTime) {
-        this.lastLoginTime = lastLoginTime;
-    }
-
-    public String getDescription() {
-        return description;
-    }
-
-    public void setDescription(String description) {
-        this.description = description;
-    }
-
-    public String getDisplayName() {
-        return displayName;
-    }
-
-    public void setDisplayName(String displayName) {
-        this.displayName = displayName;
-    }
-
-    public String getPassword() {
-        return password;
-    }
-
-    public void setPassword(String password) {
-        this.password = password;
-    }
-
-    public String getLoginName() {
-        return loginName;
-    }
-
-    public void setLoginName(String loginName) {
-        this.loginName = loginName;
-    }
-
-    public List<Role> getRoles() {
-        return roles;
-    }
-
-    public void setRoles(List<Role> roles) {
-        this.roles = roles;
-    }
-
-    public List<Integer> getPermissionList() {
-        return permissionList;
-    }
-
-    public void setPermissionList(List<Integer> permissionList) {
-        this.permissionList = permissionList;
-    }
 }

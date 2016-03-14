@@ -10,6 +10,7 @@ import com.mingguo.avarua.casual.account.service.repository.dao.UserRoleRelation
 import com.mingguo.avarua.casual.account.service.util.PasswordEncodeUtil;
 import com.mingguo.avarua.infra.web.util.StringUtil;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Repository;
 import org.springframework.util.CollectionUtils;
 
 import java.util.ArrayList;
@@ -19,6 +20,7 @@ import java.util.List;
 /**
  * Created by mingguo.wu on 2015/10/8.
  */
+@Repository("userRepository")
 public class UserRepositoryImpl implements UserRepository{
 
 

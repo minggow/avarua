@@ -14,7 +14,7 @@ import java.util.Map;
 /**
  * Created by mingguo.wu on 2015/10/8.
  */
-@Component("permissionDao")
+@Component
 public class PermissionDaoImpl implements PermissionDao{
 
     private final String NAMESPACE = "com.mingguo.avarua.casual.account.service.repository.dao.PermissionDao.";

@@ -1,6 +1,6 @@
 package com.mingguo.avarua.casual.account.test.dao;
 
-import com.alibaba.fastjson.JSON;
+import com.google.gson.Gson;
 import com.mingguo.avarua.casual.account.model.User;
 import com.mingguo.avarua.casual.account.service.repository.dao.UserDao;
 import org.junit.Test;
@@ -18,11 +18,14 @@ import java.util.List;
  * Created by mingguo.wu on 2015/9/16.
  */
 @RunWith(SpringJUnit4ClassRunner.class)
-@ContextConfiguration({
-        "classpath*:app_conf/*.xml",
-        "classpath*:mybatis/mybatis-config-account.xml"
+@ContextConfiguration(locations = {
+        "classpath*:app_conf/avarua-casual-account-datasource.xml",
+        "classpath*:app_conf/avarua-casual-account-service.xml",
+        "classpath*:mybatis/mybatis-config-account.xml",
 })
 public class UserDaoTest {
+
+    private static final Gson GSON = new Gson();
 
     @Autowired
     private UserDao userDao;
@@ -45,15 +48,15 @@ public class UserDaoTest {
     public void testGetUsers() {
         //根据loginName查询用户
         User user1 = userDao.getUserByLoginName("wumingguo");
-        System.out.println("getUserByLoginName('wumingguo')------->>>>>>>\n" + JSON.toJSONString(user1));
+        System.out.println("getUserByLoginName('wumingguo')------->>>>>>>\n" + GSON.toJson(user1));
 
         //根据id查询用户
         User user2 = userDao.getUserById(1);
-        System.out.println("getUserById(1)------------>>>>>>>\n" + JSON.toJSONString(user2));
+        System.out.println("getUserById(1)------------>>>>>>>\n" + GSON.toJson(user2));
 
         //查询登录名数目，模糊查询
         int size1 = userDao.getCountByUserName("mingguo");
-        System.out.println("getCountByUserName('mingguo')------>>>>>\n" + JSON.toJSONString(size1));
+        System.out.println("getCountByUserName('mingguo')------>>>>>\n" + GSON.toJson(size1));
 
         //查询所有的用户总数
         int size2 = userDao.getUserCount();
@@ -61,7 +64,7 @@ public class UserDaoTest {
 
         //分页查询用户列表
         List<User> userList1 = userDao.getUserList(1, 10);
-        System.out.println("getUserList(1, 10)------>>>>> \n" + JSON.toJSONString(userList1));
+        System.out.println("getUserList(1, 10)------>>>>> \n" + GSON.toJson(userList1));
 
         //根据id列表查询用户
         List<User> userList2 = userDao.getUsersByIds(new ArrayList<Integer>(){
@@ -70,10 +73,10 @@ public class UserDaoTest {
                 add(2);
             }
         });
-        System.out.println("getUsersByIds(1,2)------>>>>> \n" + JSON.toJSONString(userList2));
+        System.out.println("getUsersByIds(1,2)------>>>>> \n" + GSON.toJson(userList2));
 
         List<User> userList3 = userDao.getUsersByUserName("mingguo",1, 10);
-        System.out.println("getUsersByUserName('mingguo',1,10)------>>>>\n" + JSON.toJSONString(userList3));
+        System.out.println("getUsersByUserName('mingguo',1,10)------>>>>\n" + GSON.toJson(userList3));
 
     }
 

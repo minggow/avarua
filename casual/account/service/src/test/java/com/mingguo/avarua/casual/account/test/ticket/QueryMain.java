@@ -1,6 +1,6 @@
 package com.mingguo.avarua.casual.account.test.ticket;
 
-import com.alibaba.fastjson.JSON;
+import com.google.gson.Gson;
 import com.mingguo.avarua.casual.account.test.ticket.model.BookItem;
 import com.mingguo.avarua.casual.account.test.ticket.model.QueryLeftNewDTO;
 import com.mingguo.avarua.casual.account.test.ticket.model.QueryResult;
@@ -15,6 +15,7 @@ import java.util.List;
  */
 public class QueryMain {
     //"https://kyfw.12306.cn/otn/leftTicket/queryT?leftTicketDTO.train_date=2016-01-06&leftTicketDTO.from_station=BJP&leftTicketDTO.to_station=XCH&purpose_codes=ADULT";
+    private static final Gson GSON = new Gson();
     private static final String PREFIX = "https://kyfw.12306.cn/otn/leftTicket/queryT?leftTicketDTO.train_date=";
     private static final String SUFFIX = "&leftTicketDTO.from_station=XCH&leftTicketDTO.to_station=BJP&purpose_codes=ADULT";
     private static final SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd mm:HH:ss");
@@ -28,7 +29,7 @@ public class QueryMain {
 //            System.out.println(result);
             QueryResult queryResult = null;
             try {
-                queryResult = JSON.parseObject(result, QueryResult.class);
+                queryResult = GSON.fromJson(result, QueryResult.class);
             } catch (Exception e) {
                 System.out.println("转化JSON出错！！！");
                 continue;

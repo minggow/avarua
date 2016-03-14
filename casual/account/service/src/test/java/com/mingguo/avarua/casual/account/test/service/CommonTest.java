@@ -1,9 +1,9 @@
 package com.mingguo.avarua.casual.account.test.service;
 
-import com.alibaba.fastjson.JSON;
 import com.google.common.base.Function;
 import com.google.common.collect.Lists;
 import com.google.common.collect.Maps;
+import com.google.gson.Gson;
 import com.sun.istack.internal.NotNull;
 import lombok.*;
 import org.junit.Test;
@@ -18,6 +18,8 @@ import java.util.*;
  */
 
 public class CommonTest {
+
+    private static final Gson GSON = new Gson();
 
     @Test
     public void test01() {
@@ -91,16 +93,16 @@ public class CommonTest {
         for (int i = 0; i < 10; ++i) {
             lombokDataList.add(new LombokData(i, i + "-name", i + "-desc"));
         }
-        System.out.println("#####" + JSON.toJSONString(lombokDataList));
+        System.out.println("#####" + GSON.toJson(lombokDataList));
         Map<Integer, LombokData> lombokDataMap = Maps.uniqueIndex(lombokDataList, new Function<LombokData, Integer>() {
             @Override
             public Integer apply(LombokData lombokData) {
                 return lombokData.getId();
             }
         });
-        System.out.println("#####" + JSON.toJSONString(lombokDataMap));
+        System.out.println("#####" + GSON.toJson(lombokDataMap));
         for (List lombokList : Lists.partition(lombokDataList, 2)) {
-            System.out.println(">>>>" + JSON.toJSONString(lombokList));
+            System.out.println(">>>>" + GSON.toJson(lombokList));
         }
         List<LomData> lomDataList = Lists.transform(lombokDataList, new Function<LombokData, LomData>() {
             @Override
@@ -108,7 +110,7 @@ public class CommonTest {
                 return new LomData(lombokData.getId(), lombokData.getName());
             }
         });
-        System.out.println("#####" + JSON.toJSONString(lomDataList));
+        System.out.println("#####" + GSON.toJson(lomDataList));
     }
 
     @Test
@@ -119,7 +121,7 @@ public class CommonTest {
             add("333");
         }};
         List<String> cidList = new ArrayList<String>(cidSet);
-        System.out.println("#### --->>> " + JSON.toJSONString(cidList));
+        System.out.println("#### --->>> " + GSON.toJson(cidList));
     }
 
     @Test
@@ -184,7 +186,7 @@ public class CommonTest {
                 put(3, 0);
             }
         };
-        System.out.println(JSON.toJSONString(lombokDataList));
+        System.out.println(GSON.toJson(lombokDataList));
         System.out.println("-----------------------------");
 //        for(LombokData lombokData : lombokDataList) {
 //            if(map.containsKey(lombokData.getId())) {
@@ -198,7 +200,7 @@ public class CommonTest {
                 it.remove();
             }
         }
-        System.out.println(JSON.toJSONString(lombokDataList));
+        System.out.println(GSON.toJson(lombokDataList));
     }
 
     @Test
@@ -214,7 +216,7 @@ public class CommonTest {
         };
 
         Map<Integer, Map<String, Object>> dataMap = new HashMap<Integer, Map<String, Object>>();
-        System.out.println(JSON.toJSONString(dataList));
+        System.out.println(GSON.toJson(dataList));
         List<Object> result = new ArrayList<Object>();
         for(Integer uid : dataList) {
             Map<String, Object> map = new HashMap<String, Object>();
@@ -224,7 +226,7 @@ public class CommonTest {
             result.add(map);
         }
 
-        System.out.println(JSON.toJSONString(result));
+        System.out.println(GSON.toJson(result));
     }
     @Data
     @RequiredArgsConstructor

@@ -1,6 +1,7 @@
 package com.mingguo.avarua.casual.account.model;
 
 import com.mingguo.casual.infra.bean.model.AbstractBaseModel;
+import lombok.Data;
 
 import java.util.List;
 
@@ -8,6 +9,7 @@ import java.util.List;
  * 角色类
  * Created by mingguo.wu on 2015/9/15.
  */
+@Data
 public class Role extends AbstractBaseModel{
     /**
      * 角色名称
@@ -26,35 +28,4 @@ public class Role extends AbstractBaseModel{
      */
     private Integer permissionCount;
 
-    public String getRoleName() {
-        return roleName;
-    }
-
-    public void setRoleName(String roleName) {
-        this.roleName = roleName;
-    }
-
-    public String getDescription() {
-        return description;
-    }
-
-    public void setDescription(String description) {
-        this.description = description;
-    }
-
-    public List<Permission> getPermissions() {
-        return permissions;
-    }
-
-    public void setPermissions(List<Permission> permissions) {
-        this.permissions = permissions;
-    }
-
-    public Integer getPermissionCount() {
-        return permissionCount;
-    }
-
-    public void setPermissionCount(Integer permissionCount) {
-        this.permissionCount = permissionCount;
-    }
 }

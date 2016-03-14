@@ -1,11 +1,13 @@
 package com.mingguo.avarua.casual.account.model;
 
 import com.mingguo.casual.infra.bean.model.AbstractBaseModel;
+import lombok.Data;
 
 /**
  * 用户和角色对应关系类
  * Created by wumingguo on 2015/9/21.
  */
+@Data
 public class UserRoleRelation extends AbstractBaseModel{
 
     /**
@@ -17,19 +19,4 @@ public class UserRoleRelation extends AbstractBaseModel{
      */
     private Integer roleId;
 
-    public Integer getUserId() {
-        return userId;
-    }
-
-    public void setUserId(Integer userId) {
-        this.userId = userId;
-    }
-
-    public Integer getRoleId() {
-        return roleId;
-    }
-
-    public void setRoleId(Integer roleId) {
-        this.roleId = roleId;
-    }
 }

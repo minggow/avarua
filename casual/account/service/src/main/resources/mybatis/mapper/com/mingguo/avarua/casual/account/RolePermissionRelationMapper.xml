@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
 <mapper namespace="com.mingguo.avarua.casual.account.service.repository.dao.RolePermissionRelationDao">
-    <resultMap id="RelationResultMap" type="com.mingguo.wu.account.model.RolePermissionRelation">
+    <resultMap id="RelationResultMap" type="com.mingguo.avarua.casual.account.model.RolePermissionRelation">
         <id column="id" property="id"/>
         <result column="role_id" property="roleId"/>
         <result column="permission_id" property="permissionId"/>
@@ -15,7 +15,7 @@
     </sql>
 
     <!--addRolePermissionRelation-->
-    <insert id="addRolePermissionRelation" parameterType="com.mingguo.wu.account.model.RolePermissionRelation">
+    <insert id="addRolePermissionRelation" parameterType="com.mingguo.avarua.casual.account.model.RolePermissionRelation">
         INSERT INTO role_permission_relation (role_id, permission_id, create_time)
         VALUES (#{roleId}, #{permissionId}, now())
         <selectKey resultType="int" keyProperty="id">
@@ -24,7 +24,7 @@
     </insert>
 
     <!--updateRolePermissionRelation-->
-    <update id="updateRolePermissionRelation" parameterType="com.mingguo.wu.account.model.RolePermissionRelation">
+    <update id="updateRolePermissionRelation" parameterType="com.mingguo.avarua.casual.account.model.RolePermissionRelation">
         UPDATE role_permission_relation
         <set>
             <if test="roleId != null">

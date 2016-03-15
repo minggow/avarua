@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
 <mapper namespace="com.mingguo.avarua.casual.account.service.repository.dao.UserDao">
-    <resultMap id="UserResultMap" type="com.mingguo.wu.account.model.User">
+    <resultMap id="UserResultMap" type="com.mingguo.avarua.casual.account.model.User">
         <id column="id" property="id"/>
         <result column="login_name" property="loginName"/>
         <result column="password" property="password"/>
@@ -20,7 +20,7 @@
     </sql>
 
     <!--addUser-->
-    <insert id="addUser" parameterType="com.mingguo.wu.account.model.User">
+    <insert id="addUser" parameterType="com.mingguo.avarua.casual.account.model.User">
         INSERT INTO `user` (login_name, password, display_name, description, last_login_time, login_count, create_time )
         VALUES (#{loginName}, #{password}, #{displayName}, #{description}, #{lastLoginTime}, #{loginCount}, now())
         <selectKey resultType="int" keyProperty="id">
@@ -37,7 +37,7 @@
     </update>
 
     <!--updateUser-->
-    <update id="updateUser" parameterType="com.mingguo.wu.account.model.User">
+    <update id="updateUser" parameterType="com.mingguo.avarua.casual.account.model.User">
         UPDATE `user`
         <set>
             <if test="null != password and password !=''">

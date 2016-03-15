@@ -19,9 +19,9 @@ import java.util.List;
  */
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration(locations = {
-        "classpath*:app_conf/avarua-casual-account-datasource.xml",
-        "classpath*:app_conf/avarua-casual-account-service.xml",
-        "classpath*:mybatis/mybatis-config-account.xml",
+        "classpath:app_conf/avarua-casual-account-datasource.xml",
+        "classpath:app_conf/avarua-casual-account-service.xml",
+        "classpath:mybatis/mybatis-config-account.xml",
 })
 public class UserDaoTest {
 

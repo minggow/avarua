@@ -4,7 +4,6 @@ import com.google.common.base.Function;
 import com.google.common.collect.Lists;
 import com.google.common.collect.Maps;
 import com.google.gson.Gson;
-import com.sun.istack.internal.NotNull;
 import lombok.*;
 import org.junit.Test;
 
@@ -23,7 +22,7 @@ public class CommonTest {
 
     @Test
     public void test01() {
-        LombokData lombokData = new LombokData(1, null, null);
+        LombokData lombokData = new LombokData(1, "name", "desc");
         System.out.println("toString:----->>> " + lombokData.toString());
         System.out.println("HashCode:----->>> " + lombokData.hashCode());
 
@@ -244,7 +243,7 @@ public class CommonTest {
     @AllArgsConstructor
     class LomData {
         private Integer id;
-        @NotNull
+        @NonNull
         private String name;
     }
 

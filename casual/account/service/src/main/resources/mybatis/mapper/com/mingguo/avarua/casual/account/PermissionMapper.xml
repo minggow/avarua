@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
 <mapper namespace="com.mingguo.avarua.casual.account.service.repository.dao.PermissionDao">
-    <resultMap id="PermissionResultMap" type="com.mingguo.wu.account.model.Permission">
+    <resultMap id="PermissionResultMap" type="com.mingguo.avarua.casual.account.model.Permission">
         <id column="id" property="id" />
         <result column="permission_name" property="permissionName" />
         <result column="description" property="description" />
@@ -14,7 +14,7 @@
     </sql>
 
     <!--addPermission-->
-    <insert id="addPermission" parameterType="com.mingguo.wu.account.model.Permission">
+    <insert id="addPermission" parameterType="com.mingguo.avarua.casual.account.model.Permission">
         INSERT INTO permission(permission_name, description, create_time)
         VALUES (#{permissionName}, #{description}, now())
         <selectKey  resultType="int" keyProperty="id">
@@ -31,7 +31,7 @@
     </update>
 
     <!--updatePermission-->
-    <update id="updatePermission" parameterType="com.mingguo.wu.account.model.Permission">
+    <update id="updatePermission" parameterType="com.mingguo.avarua.casual.account.model.Permission">
         UPDATE permission
         <set>
             <if test="null != permissionName and '' != permissionName">

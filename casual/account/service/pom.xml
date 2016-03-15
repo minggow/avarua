@@ -47,18 +47,18 @@
         <resources>
             <resource>
                 <directory>src/main/java</directory>
-                <filtering>false</filtering>
+                <filtering>true</filtering>
                 <includes>
                     <include>**/*.xml</include>
                 </includes>
             </resource>
             <resource>
                 <directory>src/main/resources</directory>
-                <filtering>false</filtering>
+                <filtering>true</filtering>
             </resource>
             <resource>
                 <directory>src/main/assembly/conf</directory>
-                <filtering>true</filtering>
+                <filtering>false</filtering>
                 <includes>
                     <include>**/*.properties</include>
                     <include>**/*.xml</include>
@@ -77,16 +77,16 @@
                         <goals>
                             <goal>unpack</goal>
                         </goals>
-                        <configuration>
-                            <artifactItems>
-                                <artifactItem>
-                                    <groupId>com.dajie</groupId>
-                                    <artifactId>dj-common-dubbo</artifactId>
-                                    <outputDirectory>${project.build.directory}/dubbo</outputDirectory>
-                                    <includes>META-INF/assembly/**</includes>
-                                </artifactItem>
-                            </artifactItems>
-                        </configuration>
+                        <!--<configuration>-->
+                            <!--<artifactItems>-->
+                                <!--<artifactItem>-->
+                                    <!--<groupId>com.dajie</groupId>-->
+                                    <!--<artifactId>dj-common-dubbo</artifactId>-->
+                                    <!--<outputDirectory>${project.build.directory}/dubbo</outputDirectory>-->
+                                    <!--<includes>META-INF/assembly/**</includes>-->
+                                <!--</artifactItem>-->
+                            <!--</artifactItems>-->
+                        <!--</configuration>-->
                     </execution>
                 </executions>
             </plugin>

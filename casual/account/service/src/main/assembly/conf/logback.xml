@@ -7,7 +7,7 @@
     <property name="encoding" value="UTF-8"/>
     <property name="append" value="true"/>
     <!-- 日志文件名 -->
-    <property name="logFileName" value="dj-job-v2-service-provider" />
+    <property name="logFileName" value="avarua-casual-account-service" />
     <property name="normal-pattern" value="%d{yyyy-MM-dd.HH:mm:ss.SSS} [%thread] %-5level %logger{10}.%M:%L  %msg%n"/>
 
 

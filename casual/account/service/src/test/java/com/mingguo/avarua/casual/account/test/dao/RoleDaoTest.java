@@ -1,15 +1,9 @@
 package com.mingguo.avarua.casual.account.test.dao;
 
-import com.google.gson.Gson;
 import com.mingguo.avarua.casual.account.model.Role;
 import com.mingguo.avarua.casual.account.service.repository.dao.RoleDao;
 import org.junit.*;
-import org.junit.runner.RunWith;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.test.context.ContextConfiguration;
-import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
 import java.util.Arrays;
 import java.util.Date;
@@ -17,16 +11,8 @@ import java.util.Date;
 /**
  * Created by wumingguo on 2015/9/20.
  */
-@RunWith(SpringJUnit4ClassRunner.class)
-@ContextConfiguration(locations = {
-        "classpath:app_conf/avarua-casual-account-datasource.xml",
-        "classpath:app_conf/avarua-casual-account-service.xml",
-        "classpath:mybatis/mybatis-config-account.xml"
-})
-public class RoleDaoTest {
 
-    private static final Gson GSON = new Gson();
-    private static final Logger LOGGER = LoggerFactory.getLogger(RoleDaoTest.class);
+public class RoleDaoTest extends BaseDaoTest{
 
     @Autowired
     private RoleDao roleDao;

@@ -1,13 +1,11 @@
 package com.mingguo.avarua.casual.account.test.dao;
 
-import com.google.gson.Gson;
 import com.mingguo.avarua.casual.account.model.User;
 import com.mingguo.avarua.casual.account.service.repository.dao.UserDao;
+import org.junit.After;
+import org.junit.Before;
 import org.junit.Test;
-import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.test.context.ContextConfiguration;
-import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
 import java.util.ArrayList;
 import java.util.Collections;
@@ -17,18 +15,23 @@ import java.util.List;
 /**
  * Created by mingguo.wu on 2015/9/16.
  */
-@RunWith(SpringJUnit4ClassRunner.class)
-@ContextConfiguration(locations = {
-        "classpath:app_conf/avarua-casual-account-datasource.xml",
-        "classpath:app_conf/avarua-casual-account-service.xml",
-        "classpath:mybatis/mybatis-config-account.xml",
-})
-public class UserDaoTest {
+public class UserDaoTest extends BaseDaoTest{
 
-    private static final Gson GSON = new Gson();
+    private static final String LOGIN_NAME1 = "wumingguo";
+    private static final String LOGIN_NAME2 = "wumingguo2";
 
     @Autowired
     private UserDao userDao;
+
+    @Before
+    public void setUp() {
+
+    }
+
+    @After
+    public void tearDown() {
+
+    }
 
     @Test
     public void testAddUser() {

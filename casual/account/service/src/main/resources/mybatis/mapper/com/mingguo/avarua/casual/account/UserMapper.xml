@@ -11,7 +11,6 @@
         <result column="login_count" property="loginCount"/>
         <result column="create_time" property="createTime"/>
         <result column="_timestamp" property="updateTime"/>
-        <result column="is_delete" property="isDelete" />
     </resultMap>
 
     <sql id="User_Column_List" >
@@ -56,19 +55,19 @@
                 description = #{description},
             </if>
         </set>
-        WHERE id = #{id} AND is_delete = 0
+        WHERE id = #{id}
     </update>
 
     <!--getUserById-->
     <select id="getUserById" parameterType="java.lang.Integer" resultMap="UserResultMap">
         SELECT <include refid="User_Column_List" /> FROM `user`
-        WHERE id = #{id} AND is_delete = 0
+        WHERE id = #{id}
     </select>
 
     <!--getUsersByIds-->
     <select id="getUsersByIds" parameterType="java.util.List" resultMap="UserResultMap">
         SELECT <include refid="User_Column_List" /> FROM `user`
-        WHERE is_delete = 0 AND id IN
+        WHERE id IN
         <foreach item="item" collection="list" separator="," open="(" close=")" index="">
             #{item}
         </foreach>
@@ -77,29 +76,28 @@
     <!--getUsersByLoginName-->
     <select id="getUserByLoginName" parameterType="java.lang.String" resultMap="UserResultMap">
         SELECT <include refid="User_Column_List" /> FROM `user`
-        WHERE login_name = #{loginName} AND is_delete = 0
+        WHERE login_name = #{loginName}
     </select>
 
     <!--getUserList-->
     <select id="getUserList" resultMap="UserResultMap">
-        SELECT <include refid="User_Column_List" /> FROM `user`
-        WHERE is_delete = 0 LIMIT #{offset}, #{limit}
+        SELECT <include refid="User_Column_List" /> FROM `user` LIMIT #{offset}, #{limit}
     </select>
 
     <select id="getUserCount" resultType="java.lang.Integer">
-        SELECT count(1) FROM `user` WHERE is_delete = 0
+        SELECT count(1) FROM `user`
     </select>
 
     <!--getCountByUserName-->
     <select id="getCountByUserName" resultType="java.lang.Integer" parameterType="java.lang.String">
         SELECT COUNT(1) FROM `user`
-        WHERE login_name LIKE "%"#{userName}"%" AND is_delete = 0
+        WHERE login_name LIKE "%"#{userName}"%"
     </select>
 
     <!--getUsersByUserName-->
     <select id="getUsersByUserName" parameterType="java.util.List" resultMap="UserResultMap">
         SELECT <include refid="User_Column_List" /> FROM `user`
-        WHERE login_name LIKE "%"#{userName}"%" AND is_delete = 0
+        WHERE login_name LIKE "%"#{userName}"%"
         LIMIT #{offset}, #{limit}
     </select>
 

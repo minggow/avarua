@@ -37,24 +37,4 @@
         WHERE id = #{id} AND is_delete = 0
     </update>
 
-<!--    deleteByIds
-
-    deleteByUnicKey(Integer roleId, Integer permissionId);
-
-    getRolePermissionRelationCount
-
-    getRolePermissionRelationList
-
-    getCountByRoleId(Integer roleId);
-
-    getByRoleID
-
-    getCountMapByRoleIds
-
-    getPermissionListByRoleIds
-
-    getPermission-->
-
-
-
 </mapper>

@@ -11,13 +11,7 @@ import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 /**
  * Created by wumingguo on 2015/9/21.
  */
-@RunWith(SpringJUnit4ClassRunner.class)
-@ContextConfiguration(locations = {
-        "classpath:app_conf/avarua-casual-account-datasource.xml",
-        "classpath:app_conf/avarua-casual-account-service.xml",
-        "classpath:mybatis/mybatis-config-account.xml"
-})
-public class UserRoleRelationTest {
+public class UserRoleRelationTest extends BaseDaoTest{
 
     @Autowired
     private UserRoleRelationDao userRoleRelationDao;

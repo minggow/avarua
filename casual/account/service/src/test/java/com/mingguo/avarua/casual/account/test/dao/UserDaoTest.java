@@ -20,7 +20,7 @@ public class UserDaoTest extends BaseDaoTest{
     @Autowired
     private UserDao userDao;
 
-    @BeforeClass
+    @Before
     public void setUp() {
         tearDown();
         //init user1 & user2
@@ -38,7 +38,7 @@ public class UserDaoTest extends BaseDaoTest{
         user2.setLastLoginTime(new Date());
     }
 
-    @AfterClass
+    @After
     public void tearDown() {
         //delete ${LOGIN_NAME1}
         User user1 = userDao.getUserByLoginName(LOGIN_NAME1);

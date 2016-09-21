@@ -1,10 +1,10 @@
-package com.mingguo.avarua.casual.account.test.ticket;
+package com.mingguo.avarua.casual.account.test.common.ticket;
 
 import com.google.gson.Gson;
-import com.mingguo.avarua.casual.account.test.ticket.model.BookItem;
-import com.mingguo.avarua.casual.account.test.ticket.model.QueryLeftNewDTO;
-import com.mingguo.avarua.casual.account.test.ticket.model.QueryResult;
-import com.mingguo.avarua.casual.account.test.ticket.util.HttpClientUtil;
+import com.mingguo.avarua.casual.account.test.common.ticket.model.BookItem;
+import com.mingguo.avarua.casual.account.test.common.ticket.model.QueryLeftNewDTO;
+import com.mingguo.avarua.casual.account.test.common.ticket.model.QueryResult;
+import com.mingguo.avarua.casual.account.test.common.ticket.util.HttpClientUtil;
 
 import java.text.SimpleDateFormat;
 import java.util.Date;

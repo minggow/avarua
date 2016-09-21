@@ -1,4 +1,4 @@
-package com.mingguo.avarua.casual.account.test.service;
+package com.mingguo.avarua.casual.account.test.common.mess;
 
 import org.junit.Test;
 

@@ -1,4 +1,4 @@
-package com.mingguo.avarua.casual.account.test.ticket.model;
+package com.mingguo.avarua.casual.account.test.common.ticket.model;
 
 import lombok.Data;
 

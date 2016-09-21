@@ -1,4 +1,4 @@
-package com.mingguo.avarua.casual.account.test.ticket.util;
+package com.mingguo.avarua.casual.account.test.common.ticket.util;
 
 import javax.mail.*;
 import javax.mail.internet.InternetAddress;

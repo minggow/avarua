@@ -1,4 +1,4 @@
-package com.mingguo.avarua.casual.account.test.common.mess;
+package com.mingguo.avarua.casual.account.test.common.mess.demo;
 
 import lombok.Cleanup;
 import org.junit.Test;

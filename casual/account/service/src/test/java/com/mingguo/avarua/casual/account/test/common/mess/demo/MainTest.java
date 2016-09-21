@@ -1,4 +1,4 @@
-package com.mingguo.avarua.casual.account.test.common.mess;
+package com.mingguo.avarua.casual.account.test.common.mess.demo;
 
 /**
  * Created by mingguo.wu on 2015/11/18.

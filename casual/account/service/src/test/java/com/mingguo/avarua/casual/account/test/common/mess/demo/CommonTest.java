@@ -1,4 +1,4 @@
-package com.mingguo.avarua.casual.account.test.common.mess;
+package com.mingguo.avarua.casual.account.test.common.mess.demo;
 
 import com.google.common.base.Function;
 import com.google.common.collect.Lists;

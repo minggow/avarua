@@ -1,0 +1,156 @@
+package com.mingguo.avarua.casual.account.test.common.mess.concurrent;
+
+import lombok.Data;
+import org.apache.commons.lang3.tuple.MutablePair;
+import org.apache.http.annotation.GuardedBy;
+import org.apache.http.annotation.Immutable;
+import org.apache.http.annotation.ThreadSafe;
+import org.junit.Test;
+
+import java.util.Collections;
+import java.util.HashMap;
+import java.util.Map;
+import java.util.concurrent.ConcurrentHashMap;
+
+/**
+ * Created by mingguo.wu on 2016/9/21.
+ */
+public class Charpter01Test {
+
+    @Test
+    public void test01() {
+        Counter counter = new Counter();
+        int num = 0;
+        while(true) {
+            counter.increment();
+            ++num;
+            if(num % 1000 == 0) {
+                System.out.println("now num is " + num);
+            }
+        }
+
+    }
+
+    //this逃逸,当内部类代码执行的时候，外部类对象的创建过程很有可能还没结束，
+    //这个时候如果内部类访问外部类中的数据，很有可能得到还没有正确初始化的数据。
+    //his逃逸就是说在构造函数返回之前其他线程就持有该对象的引用，
+    //调用尚未构造完全的对象的方法可能引发错误。
+
+    @ThreadSafe
+    class MutableInteger {
+        @GuardedBy("this")
+        private int value;
+
+        public synchronized int getValue() {
+            return value;
+        }
+
+        public synchronized void setValue(int value) {
+            this.value = value;
+        }
+    }
+
+    @ThreadSafe
+    final class Counter {
+        @GuardedBy("this") private short value = 0;
+        public synchronized short getValue() {
+            return value;
+        }
+        public synchronized short increment() {
+            if(value == Short.MAX_VALUE) {
+                throw new IllegalStateException("count overflow, value is " + value);
+            }
+            return ++value;
+        }
+    }
+
+    @ThreadSafe
+    class MonitorVehicleTracker {
+        @GuardedBy("this")
+        private final Map<String, MutablePoint> locations;
+
+        public MonitorVehicleTracker(Map<String, MutablePoint> locations) {
+            this.locations = deepCopy(locations);
+        }
+
+        public synchronized MutablePoint getLocation(String id) {
+            MutablePoint loc = locations.get(id);
+            return loc == null ? null : new MutablePoint(loc);
+        }
+
+        public synchronized void setLocation(String id, int x, int y) {
+            MutablePoint loc = locations.get(id);
+            if(loc == null) {
+                throw new IllegalArgumentException("No such ID: " + id);
+            }
+            loc.x = x;
+            loc.y = y;
+        }
+
+        private synchronized Map<String, MutablePoint> deepCopy(Map<String, MutablePoint> m) {
+            Map<String, MutablePoint> result = new HashMap<>();
+            for(String id : m.keySet()) {
+                result.put(id, new MutablePoint(m.get(id)));
+            }
+            return Collections.unmodifiableMap(result);
+        }
+
+
+        @Data
+        class MutablePoint {
+            private long x;
+            private long y;
+            MutablePoint(MutablePoint m) {
+                this.x = m.getX();
+                this.y = m.getY();
+            }
+        }
+    }
+
+    @ThreadSafe
+    class DelegatingVehicleTracker {
+        private final ConcurrentHashMap<String, Point> locations;
+        private final Map<String, Point> unmodifiableMap;
+
+        public DelegatingVehicleTracker(Map<String, Point> points) {
+            locations = new ConcurrentHashMap<>(points);
+            unmodifiableMap = Collections.unmodifiableMap(points);
+        }
+
+        /************************************
+         * 以下这种方式返回不可修改却是实时的车辆变化
+         * 如果仅仅需要车辆时刻快照，参照如下实现
+         * @<code>
+         * public Map<String, Point> getLocations(String id) {
+         *     return Collections.unmodifiableMap(new HashMap<String, Point>(locations));
+         * }
+         * </code>
+         **********************************/
+        public Map<String, Point> getLocations() {
+            return unmodifiableMap;
+        }
+
+        public Point getLocation(String id) {
+            return locations.get(id);
+        }
+
+        public void setLocation(String id, int x, int y) {
+            if(locations.replace(id, new Point(x, y)) == null) {
+                throw new IllegalArgumentException("Invalid vehcle id:" + id);
+            }
+
+        }
+
+        @Immutable @Data
+        class Point {
+            private final int x;
+            private final int y;
+            public Point(int x, int y) {
+                this.x = x;
+                this.y = y;
+            }
+        }
+    }
+
+
+}

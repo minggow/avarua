@@ -12,7 +12,7 @@ public class DeleteTest {
 
     @Test
     public void testDeleteFile() {
-        String fileName = "C:\\Users\\mingguo.wu\\Desktop\\trunk";
+        String fileName = "C:\\Users\\mingguo.wu\\Desktop\\WebRoot";
         handleFile(new File(fileName));
     }
 
@@ -21,7 +21,7 @@ public class DeleteTest {
             File[] files = f.listFiles();
             if (files != null)
                 for (File file : files)
-                    if (file.getName().contains(".class")) //这里换成正则表达式亦可，删除符合条件的文件或文件夹
+                    if (file.getName().contains(".svn")) //这里换成正则表达式亦可，删除符合条件的文件或文件夹
                         deleteAllFiles(file);
                     else //假如当前目录下没有svn文件夹，查看子目录是否有
                         handleFile(file);

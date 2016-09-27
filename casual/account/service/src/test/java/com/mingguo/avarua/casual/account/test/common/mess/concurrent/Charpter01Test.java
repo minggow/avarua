@@ -1,7 +1,6 @@
 package com.mingguo.avarua.casual.account.test.common.mess.concurrent;
 
 import lombok.Data;
-import org.apache.commons.lang3.tuple.MutablePair;
 import org.apache.http.annotation.GuardedBy;
 import org.apache.http.annotation.Immutable;
 import org.apache.http.annotation.ThreadSafe;

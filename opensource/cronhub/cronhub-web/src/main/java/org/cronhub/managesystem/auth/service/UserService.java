@@ -47,7 +47,8 @@ public class UserService {
 		return false;
 */
 
-		if (StringUtils.hasText(userName) && StringUtils.hasText(password)) {
+		return true;
+/*		if (StringUtils.hasText(userName) && StringUtils.hasText(password)) {
 			LDAPConnection lc = new LDAPConnection();
 			try {
 				lc.connect("ad.op.dajie-inc.com", 389);
@@ -58,6 +59,7 @@ public class UserService {
 			}
 		}
 		return false;
+*/
 	}
 
 	public UserDao getUserDao() {

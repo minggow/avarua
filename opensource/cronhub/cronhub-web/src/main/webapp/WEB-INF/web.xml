@@ -50,12 +50,12 @@
    	</filter-mapping>
    	<filter-mapping>
    		<filter-name>pageFilter</filter-name>
-  		<url-pattern>/page/*.jsp</url-pattern>
+  		<url-pattern>/page/*</url-pattern>
    	</filter-mapping>
-   	<filter-mapping>
-   		<filter-name>pageFilter</filter-name>
-  		<url-pattern>/page/*.html</url-pattern>
-   	</filter-mapping>
+   	<!--<filter-mapping>-->
+   		<!--<filter-name>pageFilter</filter-name>-->
+  		<!--<url-pattern>/page/*.html</url-pattern>-->
+   	<!--</filter-mapping>-->
 
 	<!-- 先启动spring的listener,再启动其他listener -->
 	<listener>

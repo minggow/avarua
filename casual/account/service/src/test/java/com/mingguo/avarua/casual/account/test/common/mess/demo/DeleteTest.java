@@ -12,7 +12,7 @@ public class DeleteTest {
 
     @Test
     public void testDeleteFile() {
-        String fileName = "C:\\Users\\mingguo.wu\\Desktop\\trunk";
+        String fileName = "D:\\tmp2\\trunk";
         handleFile(new File(fileName));
     }
 

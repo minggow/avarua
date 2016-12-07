@@ -1,9 +1,12 @@
 package com.mingguo.avarua.casual.account.test.common.mess.demo;
 
+import com.google.common.collect.Lists;
 import lombok.Data;
 import org.junit.Test;
 
+import java.util.Arrays;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 /**
@@ -81,8 +84,44 @@ public class MainTest {
         for(TreeNode node : cache.keySet()) {
             System.out.println("node: " + node.val + ", rob:" + cache.get(node));
         }
+    }
 
+    @Test
+    public void test04() {
+        List<Integer> lista = Arrays.asList(1, 2, 4, 5);
+        List<Integer> listb = Arrays.asList(9, 9, 3, 9, 9, 9, 9, 9, 9);
 
+        List<Integer> result = Lists.newArrayList();
+
+        int i = 0;
+        int carry = 0;
+        while(i<lista.size()  && i <listb.size()) {
+            int a = lista.get(i);
+            int b = listb.get(i);
+            int r = (a + b + carry) % 10;
+            carry = (a + b) / 10;
+            result.add(r);
+            ++i;
+        }
+
+        if(i == lista.size()) {
+            for(; i<listb.size(); ++i) {
+                int r = (listb.get(i) + carry) % 10;
+                carry = (listb.get(i) + carry) / 10;
+                result.add(r);
+            }
+        } else {
+            for(; i<listb.size(); ++i) {
+                int r = (listb.get(i) + carry) % 10;
+                carry = (listb.get(i) + carry) / 10;
+                result.add(r);
+            }
+        }
+        if(carry != 0) {
+            result.add(carry);
+        }
+
+        System.out.println(result);
 
     }
 

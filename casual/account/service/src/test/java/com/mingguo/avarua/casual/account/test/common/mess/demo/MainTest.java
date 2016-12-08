@@ -90,9 +90,7 @@ public class MainTest {
     public void test04() {
         List<Integer> lista = Arrays.asList(1, 2, 4, 5);
         List<Integer> listb = Arrays.asList(9, 9, 3, 9, 9, 9, 9, 9, 9);
-
         List<Integer> result = Lists.newArrayList();
-
         int i = 0;
         int carry = 0;
         while(i<lista.size()  && i <listb.size()) {
@@ -120,13 +118,77 @@ public class MainTest {
         if(carry != 0) {
             result.add(carry);
         }
-
         System.out.println(result);
+    }
 
+    @Test
+    public void test05() {
+        int[] arr = {14, 15, 12, 19, 3, 18, 4, 17, 5, 16, 6, 20, 7, 1, 8, 13, 9, 2, 10, 11};
+//        int arr[]={0, 16, 20, 3, 11, 17, 8};
+        System.out.println(Arrays.toString(arr));
+        int N = 20;
+        int k = 3;
+        int[] a = new int[k];
+        for(int i = 0; i < k; ++i) {
+            a[i] = arr[i];
+        }
+        heapSort(a, k);
+        System.out.println(Arrays.toString(a));
+        for(int i=k; i< N; ++i) {
+            if(a[0] < arr[i]) {
+                a[0] = arr[i];
+            }
+            heapAdjust(a, 0, k);
+//            int temp = a[0];
+//            a[0] = a[k-1];
+//            a[k-1] = temp;
+            System.out.println(Arrays.toString(a));
+        }
+    }
+
+    private void heapSort(int[] arr, int size) {
+        //build heap
+        for(int i= (size-1)/2; i >= 0; --i) {
+            heapAdjust(arr, i, size);
+        }
+        System.out.println(Arrays.toString(arr));
+
+        for(int i = size-1; i > 0; --i) {
+            System.out.println("parent = " + i + "\n" +Arrays.toString(arr));
+            //swap parent and end
+            int temp = arr[0];
+            arr[0] = arr[i];
+            arr[i] = temp;
+            heapAdjust(arr, 0, i-1);
+
+        }
     }
 
 
-    public int rob(TreeNode root) {
+    private void heapAdjust(int[] arr, int parent, int size) {
+        int lchild = 2 * parent + 1;
+        int rchild = 2 * parent + 2;
+        int tmp = parent;
+        if(parent * 2 + 2 < size) {
+            if(lchild < size && arr[lchild] < arr[tmp]) {
+                tmp = lchild;
+            }
+            if(rchild < size && arr[rchild] < arr[tmp]) {
+                tmp = rchild;
+            }
+            if(tmp != parent) {
+                //swap
+                int temp = arr[parent];
+                arr[parent] = arr[tmp];
+                arr[tmp] = temp;
+                //adjust child heap
+                heapAdjust(arr, tmp, size);
+            }
+        }
+    }
+
+
+    private int rob(TreeNode root) {
         //如果当前节点为空 直接返回0
         if(null == root){
             return 0;

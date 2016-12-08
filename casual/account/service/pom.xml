@@ -68,28 +68,28 @@
         </resources>
         <finalName>${project.artifactId}-${build.version}</finalName>
         <plugins>
-            <plugin>
-                <artifactId>maven-dependency-plugin</artifactId>
-                <executions>
-                    <execution>
-                        <id>unpack</id>
-                        <phase>prepare-package</phase>
-                        <goals>
-                            <goal>unpack</goal>
-                        </goals>
+            <!--<plugin>-->
+                <!--<artifactId>maven-dependency-plugin</artifactId>-->
+                <!--<executions>-->
+                    <!--<execution>-->
+                        <!--<id>unpack</id>-->
+                        <!--<phase>prepare-package</phase>-->
+                        <!--<goals>-->
+                            <!--<goal>unpack</goal>-->
+                        <!--</goals>-->
                         <!--<configuration>-->
                             <!--<artifactItems>-->
                                 <!--<artifactItem>-->
-                                    <!--<groupId>com.dajie</groupId>-->
-                                    <!--<artifactId>dj-common-dubbo</artifactId>-->
-                                    <!--<outputDirectory>${project.build.directory}/dubbo</outputDirectory>-->
-                                    <!--<includes>META-INF/assembly/**</includes>-->
+                                    <!--&lt;!&ndash;<groupId>com.dajie</groupId>&ndash;&gt;-->
+                                    <!--&lt;!&ndash;<artifactId>dj-common-dubbo</artifactId>&ndash;&gt;-->
+                                    <!--&lt;!&ndash;<outputDirectory>${project.build.directory}/dubbo</outputDirectory>&ndash;&gt;-->
+                                    <!--&lt;!&ndash;<includes>META-INF/assembly/**</includes>&ndash;&gt;-->
                                 <!--</artifactItem>-->
                             <!--</artifactItems>-->
                         <!--</configuration>-->
-                    </execution>
-                </executions>
-            </plugin>
+                    <!--</execution>-->
+                <!--</executions>-->
+            <!--</plugin>-->
             <plugin>
                 <artifactId>maven-assembly-plugin</artifactId>
                 <version>2.2</version>

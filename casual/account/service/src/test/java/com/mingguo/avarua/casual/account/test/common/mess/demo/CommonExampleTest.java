@@ -1,14 +1,13 @@
 package com.mingguo.avarua.casual.account.test.common.mess.demo;
 
+import com.google.common.collect.Maps;
+import com.google.gson.Gson;
 import lombok.Cleanup;
 import org.junit.Test;
 
 import java.io.*;
 import java.text.SimpleDateFormat;
-import java.util.ArrayList;
-import java.util.Calendar;
-import java.util.Date;
-import java.util.List;
+import java.util.*;
 
 /**
  * Created by mingguo.wu on 2015/10/12.
@@ -74,6 +73,21 @@ public class CommonExampleTest {
         Date updateDate = now.getTime();
         System.out.println(new SimpleDateFormat("yyyy-MM-dd HH:mm:ss").format(updateDate));
 
+    }
+
+    @Test
+    public void test06() {
+        Map<String, Object> data = Maps.newHashMap();
+        data.put("status", true);
+        data.put("uid", 110);
+
+        System.out.println(new Gson().toJson(data));
+
+        data.put("status", false);
+
+        System.out.println(new Gson().toJson(data));
+
+        System.out.println("over");
     }
 
     protected List<String> getStringList() {

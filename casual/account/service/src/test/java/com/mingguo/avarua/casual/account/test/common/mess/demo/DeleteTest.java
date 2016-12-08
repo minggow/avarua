@@ -10,14 +10,10 @@ import java.io.File;
 public class DeleteTest {
     private static int counter = 0;
 
-//    @Test
-//    public void testDeleteFile() {
-//        String fileName = "/Users/wumingguo/Code/dajie";
-//        handleFile(new File(fileName));
-//    }
-    public static void main(String[] args) {
-       String fileName = "/Users/wumingguo/Code/dajie";
-       handleFile(new File(fileName));
+    @Test
+    public void testDeleteFile() {
+        String fileName = "/Users/wumingguo/Code/dajie";
+        handleFile(new File(fileName));
     }
 
     private static void handleFile(File f) {

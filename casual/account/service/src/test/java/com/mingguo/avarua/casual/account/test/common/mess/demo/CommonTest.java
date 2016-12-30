@@ -227,6 +227,21 @@ public class CommonTest {
 
         System.out.println(GSON.toJson(result));
     }
+
+
+    @Test
+    public void test12() {
+
+        String s = "首次笑嘻嘻xxx";
+
+        System.out.println(s.substring(2));
+
+        Map<String, Object> map = Maps.newHashMap();
+        map.put("key1", 11111111);
+        map.put("key2", "asdfasdfasd");
+        System.out.println(GSON.toJson(map));
+    }
+
     @Data
     @RequiredArgsConstructor
     @AllArgsConstructor

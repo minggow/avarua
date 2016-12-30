@@ -1,6 +1,6 @@
 package com.mingguo.avarua.casual.account.test.common.mess.demo;
 
-//import org.junit.Test;
+import org.junit.Test;
 
 import java.io.File;
 
@@ -12,7 +12,7 @@ public class DeleteTest {
 
     @Test
     public void testDeleteFile() {
-        String fileName = "/Users/wumingguo/Code/dajie";
+        String fileName = "D:\\tmp2\\trunk_2";
         handleFile(new File(fileName));
     }
 

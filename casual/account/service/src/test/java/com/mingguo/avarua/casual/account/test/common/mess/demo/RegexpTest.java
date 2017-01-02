@@ -14,7 +14,7 @@ public class RegexpTest {
 
         //deal result is img src oneerror alert(1)
 
-        codeList = codeList.toUpperCase().replaceAll("[^0-9A-Z ]","");
+        codeList = codeList.toUpperCase().replaceAll("[^0-9A-Z ]", "");
         String[] codeArr = codeList.trim().split("\\s+");
 
         System.out.println(new Gson().toJson(codeArr));

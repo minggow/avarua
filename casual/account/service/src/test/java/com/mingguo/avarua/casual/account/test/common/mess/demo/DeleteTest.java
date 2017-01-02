@@ -2,6 +2,8 @@ package com.mingguo.avarua.casual.account.test.common.mess.demo;
 
 //import org.junit.Test;
 
+import org.junit.Test;
+
 import java.io.File;
 
 /**

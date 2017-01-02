@@ -109,8 +109,8 @@ public class TestLocalDateTime {
          */
         DateTimeFormatter formatter =
                 DateTimeFormatter
-                        .ofPattern("MMM dd, yyyy - HH:mm");
-        LocalDateTime parsed = LocalDateTime.parse("Nov 03, 2014 - 07:13", formatter);
+                        .ofPattern("yyyy-MM-dd HH:mm:ss");
+        LocalDateTime parsed = LocalDateTime.parse("2017-10-10 12:12:44", formatter);
         String string = formatter.format(parsed);
         System.out.println(string);     // Nov 03, 2014 - 07:13
 

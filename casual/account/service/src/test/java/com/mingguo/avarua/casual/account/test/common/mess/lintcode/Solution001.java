@@ -1,7 +1,5 @@
 package com.mingguo.avarua.casual.account.test.common.mess.lintcode;
 
-import com.google.common.base.Strings;
-import org.apache.commons.lang.text.StrBuilder;
 import org.junit.Test;
 
 import java.util.Arrays;

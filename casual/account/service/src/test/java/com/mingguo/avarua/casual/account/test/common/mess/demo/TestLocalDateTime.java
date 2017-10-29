@@ -21,7 +21,7 @@ public class TestLocalDateTime {
          */
         Clock clock = Clock.systemDefaultZone();
         long millis = clock.millis();
-        System.out.println(millis+":"+System.currentTimeMillis());
+        System.out.println(millis + ":" + System.currentTimeMillis());
         Instant instant = clock.instant();
         Date legacyDate = Date.from(instant);   // legacy java.util.Date
         System.out.println(legacyDate);
@@ -55,10 +55,8 @@ public class TestLocalDateTime {
          */
         LocalTime late = LocalTime.of(23, 59, 59);
         System.out.println(late);       // 23:59:59
-        DateTimeFormatter germanFormatter =
-                DateTimeFormatter
-                        .ofLocalizedTime(FormatStyle.SHORT)
-                        .withLocale(Locale.GERMAN);
+        DateTimeFormatter germanFormatter = DateTimeFormatter.ofLocalizedTime(FormatStyle.SHORT)
+                .withLocale(Locale.GERMAN);
         LocalTime leetTime = LocalTime.parse("13:37", germanFormatter);
         System.out.println(leetTime);   // 13:37
 
@@ -75,10 +73,8 @@ public class TestLocalDateTime {
         DayOfWeek dayOfWeek = independenceDay.getDayOfWeek();
         System.out.println(dayOfWeek);    // FRIDAY
 
-        DateTimeFormatter germanFormatter1 =
-                DateTimeFormatter
-                        .ofLocalizedDate(FormatStyle.MEDIUM)
-                        .withLocale(Locale.GERMAN);
+        DateTimeFormatter germanFormatter1 = DateTimeFormatter.ofLocalizedDate(FormatStyle.MEDIUM)
+                .withLocale(Locale.GERMAN);
         LocalDate xmas = LocalDate.parse("24.12.2014", germanFormatter1);
         System.out.println(xmas);   // 2014-12-24
         //用这种方式比以前使用日期的要方便多了
@@ -98,18 +94,14 @@ public class TestLocalDateTime {
         /**
          * 只要附加上时区信息，就可以将其转换为一个时间点Instant对象，Instant时间点对象可以很容易的转换为老式的java.util.Date。
          */
-        Instant instant1 = sylvester
-                .atZone(ZoneId.systemDefault())
-                .toInstant();
+        Instant instant1 = sylvester.atZone(ZoneId.systemDefault()).toInstant();
         Date legacyDate1 = Date.from(instant1);
         System.out.println(legacyDate1);     // Wed Dec 31 23:59:59 CET 2014
 
         /**
          * 格式化LocalDateTime和格式化时间和日期一样的，除了使用预定义好的格式外，我们也可以自己定义格式：
          */
-        DateTimeFormatter formatter =
-                DateTimeFormatter
-                        .ofPattern("yyyy-MM-dd HH:mm:ss");
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
         LocalDateTime parsed = LocalDateTime.parse("2017-10-10 12:12:44", formatter);
         String string = formatter.format(parsed);
         System.out.println(string);     // Nov 03, 2014 - 07:13

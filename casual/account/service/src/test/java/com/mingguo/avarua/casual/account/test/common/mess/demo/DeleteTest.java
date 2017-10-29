@@ -16,6 +16,7 @@ public class DeleteTest {
     public void testDeleteFile() {
         String fileName = "D:\\tmp2\\trunk_2";
         handleFile(new File(fileName));
+        ///dddd
     }
 
     private static void handleFile(File f) {
